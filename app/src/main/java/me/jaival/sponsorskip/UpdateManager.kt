@@ -35,8 +35,11 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
+import android.content.pm.PackageManager
+import android.content.pm.Signature
 import java.io.File
 import java.io.FileOutputStream
+import java.security.MessageDigest
 
 object UpdateManager {
     private val client = OkHttpClient()
@@ -367,6 +370,19 @@ object UpdateManager {
 
             notificationManager.cancel(notifId)
 
+            val isVerified = verifyApkSignature(context, file)
+            if (!isVerified) {
+                AppLogger.log("[UPDATER] ABORTING INSTALL: Downloaded APK failed signature verification.")
+                if (file.exists()) {
+                    file.delete()
+                    AppLogger.log("[UPDATER] Deleted untrusted APK file.")
+                }
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(context, "Update failed: APK signature verification failed. Downloaded file is untrusted.", Toast.LENGTH_LONG).show()
+                }
+                return
+            }
+
             withContext(Dispatchers.Main) {
                 val intent = Intent(Intent.ACTION_VIEW)
                 val uri = FileProvider.getUriForFile(context, "${context.packageName}.provider", file)
@@ -376,7 +392,107 @@ object UpdateManager {
             }
         } catch (e: Exception) {
             notificationManager.cancel(notifId)
+            AppLogger.log("[UPDATER] Download failed: ${e.message}")
             withContext(Dispatchers.Main) { Toast.makeText(context, "Download failed.", Toast.LENGTH_SHORT).show() }
         }
+    }
+
+    private const val OFFICIAL_SIGNATURE_SHA256 = "8AED4B26590819F745DBD458B659BB8E692A71736BDE7A57FB513604A0835D11"
+
+    private fun verifyApkSignature(context: Context, apkFile: File): Boolean {
+        if (!apkFile.exists() || !apkFile.isFile || apkFile.length() == 0L) {
+            AppLogger.log("[UPDATER] Signature verification failed: APK file missing or empty.")
+            return false
+        }
+
+        val pm = context.packageManager
+        val packageName = context.packageName
+
+        val archiveInfo = pm.getPackageArchiveInfo(apkFile.absolutePath, 0)
+        if (archiveInfo == null) {
+            AppLogger.log("[UPDATER] Signature verification failed: Unable to parse downloaded APK archive info.")
+            return false
+        }
+
+        if (archiveInfo.packageName != packageName) {
+            AppLogger.log("[UPDATER] Signature verification failed: Package name mismatch! Expected '$packageName', found '${archiveInfo.packageName}'.")
+            return false
+        }
+
+        val apkSignatures = getApkSignatures(context, apkFile)
+        if (apkSignatures.isEmpty()) {
+            AppLogger.log("[UPDATER] Signature verification failed: Could not retrieve signatures from downloaded APK.")
+            return false
+        }
+
+        val apkHashes = apkSignatures.map { getSha256Digest(it.toByteArray()) }.toSet()
+        val expectedHash = OFFICIAL_SIGNATURE_SHA256.replace(":", "").uppercase()
+
+        AppLogger.log("[UPDATER] Downloaded APK certificate SHA-256 hashes: $apkHashes")
+        AppLogger.log("[UPDATER] Official expected certificate SHA-256 hash: $expectedHash")
+
+        val matches = apkHashes.contains(expectedHash)
+        if (matches) {
+            AppLogger.log("[UPDATER] APK signature verification successful. Signature matches official certificate ($expectedHash).")
+        } else {
+            AppLogger.log("[UPDATER] SECURITY ALERT: APK signature mismatch! Downloaded: $apkHashes vs Expected: $expectedHash")
+        }
+        return matches
+    }
+
+    private fun getApkSignatures(context: Context, apkFile: File): List<Signature> {
+        val pm = context.packageManager
+        val apkPath = apkFile.absolutePath
+        var signaturesList: List<Signature>? = null
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            try {
+                val flags = PackageManager.GET_SIGNING_CERTIFICATES
+                val pkgInfo = pm.getPackageArchiveInfo(apkPath, flags)
+                pkgInfo?.applicationInfo?.sourceDir = apkPath
+                pkgInfo?.applicationInfo?.publicSourceDir = apkPath
+
+                val signingInfo = pkgInfo?.signingInfo
+                if (signingInfo != null) {
+                    val sigArray = if (signingInfo.hasMultipleSigners()) {
+                        signingInfo.apkContentsSigners
+                    } else {
+                        signingInfo.signingCertificateHistory
+                    }
+                    if (sigArray != null && sigArray.isNotEmpty()) {
+                        signaturesList = sigArray.toList()
+                    }
+                }
+            } catch (e: Exception) {
+                AppLogger.log("[UPDATER] Warning: GET_SIGNING_CERTIFICATES archive retrieval failed: ${e.message}")
+            }
+        }
+
+        if (signaturesList == null || signaturesList.isEmpty()) {
+            try {
+                @Suppress("DEPRECATION")
+                val flags = PackageManager.GET_SIGNATURES
+                @Suppress("DEPRECATION")
+                val pkgInfo = pm.getPackageArchiveInfo(apkPath, flags)
+                pkgInfo?.applicationInfo?.sourceDir = apkPath
+                pkgInfo?.applicationInfo?.publicSourceDir = apkPath
+
+                @Suppress("DEPRECATION")
+                val sigArray = pkgInfo?.signatures
+                if (sigArray != null && sigArray.isNotEmpty()) {
+                    signaturesList = sigArray.toList()
+                }
+            } catch (e: Exception) {
+                AppLogger.log("[UPDATER] Warning: GET_SIGNATURES archive retrieval failed: ${e.message}")
+            }
+        }
+
+        return signaturesList ?: emptyList()
+    }
+
+    private fun getSha256Digest(bytes: ByteArray): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        return digest.joinToString("") { "%02X".format(it) }
     }
 }
