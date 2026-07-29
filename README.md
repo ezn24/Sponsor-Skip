@@ -52,6 +52,7 @@
 
 * **Stock YouTube Support:** Works directly with the official, unmodded YouTube app. No root access, patching, or third-party clients required.
 * **Multi-app support:** Other than official youtube app, you can select other apps to implement Sponsor Skip for those apps too.
+* **Spot Sponsorblock:** Skip segments from podcast on spotify with Spot Sponsorblock, enable it from settings.
 * **Granular Segment Control:** Fully customize your viewing experience. Choose to automatically skip or ignore any of the standard SponsorBlock categories:
   * Sponsors
   * Unpaid / Self Promotion
@@ -63,6 +64,11 @@
   * Tangent / Jokes
   * Music: Non-Music Section
 * **Time Saved Tracking:** Keep a count of exactly how many segments you have skipped and the total time you have saved. You can reset the count by tapping on it.
+* **Backup & Restore:** Easily backup and restore your preferences and statistics.
+* **Strict Search:** Optional strict search to make results more accurate.
+* **Quick Settings Tile & shortcut:** Quick tile and app shortcut to quickly toggle the service.
+* **Minimum segment duration:** Set minimum duration, so that segments shorter them are skipped for skipping (pun intended).
+* **Skip offset:** Set offsets to skip segment early or late. Helps devices where segment skip a few ms later.
 * **Modern & Lightweight UI:** Built with a clean, Material Design aesthetic with monet themeing. 
 * **Privacy Respecting:** It runs locally on your device and does not communicate with unnecessary third parties. No data is collected by developer. For more info refer to [Privacy Policy](#privacy-policy)
 
