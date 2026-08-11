@@ -107,6 +107,16 @@ You can download the latest compiled APK directly from the following sources:
       </a>
     </td>
   </tr>
+  <tr>
+   <th align="center">Orion Store</th>
+  </tr>
+  <tr>
+   <td align="center">
+    <a href="https://rookieenough.github.io/Orion-Data/redirect.html?id=sponsor-skip">
+     <img src="https://raw.githubusercontent.com/RookieEnough/Orion-Store/refs/heads/main/assets/orion-badge.png" alt="Download from Orion Store" height="50">
+    </a>
+   </td>
+  </tr>
 </table>
         
 ## Build from Source
