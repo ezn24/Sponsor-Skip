@@ -4,4 +4,4 @@
     android:accessibilityFlags="flagDefault"
     android:canPerformGestures="true"
     android:canRetrieveWindowContent="true"
-    android:packageNames="com.google.android.youtube" />
+    android:packageNames="tv.danmaku.bili,com.bilibili.app.in" />

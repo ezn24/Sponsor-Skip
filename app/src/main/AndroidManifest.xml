@@ -13,11 +13,11 @@
         android:name=".SkipperApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher"
-        android:label="Sponsor Skip"
+        android:label="Sponsor Skip Bilibili"
         android:theme="@style/Theme.SponsorSkipper">
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="me.jaival.sponsorskip.provider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
@@ -43,7 +43,7 @@
             </intent-filter>
         </service>
             <activity android:name=".ShortcutToggleActivity" android:theme="@android:style/Theme.NoDisplay" android:exported="true" />
-        <service android:name=".SponsorTileService" android:label="Sponsor Skip" android:icon="@drawable/ic_qst" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
+        <service android:name=".SponsorTileService" android:label="Sponsor Skip Bilibili" android:icon="@drawable/ic_qst" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>

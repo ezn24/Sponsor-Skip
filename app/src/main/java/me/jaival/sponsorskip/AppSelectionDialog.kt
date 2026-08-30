@@ -71,11 +71,11 @@ object AppSelectionDialog {
                                 notifyDataSetChanged()
                             }
 
-                            // Reverse Guard: If user adds Spotify to YouTube list while Spot is active
+                            // Reverse Guard: If user adds Spotify to the main app list while Spot is active
                             if (isChecked && targetPkg == SettingsManager.SPOTIFY_PACKAGE && SettingsManager.isSpotEnabled) {
                                 AlertDialog.Builder(activity)
                                     .setTitle("App Conflict")
-                                    .setMessage("Spotify is currently active in Spot SponsorBlock.\n\nIf you add it to the Main YouTube list, Spot SponsorBlock will be turned off.")
+                                    .setMessage("Spotify is currently active in Spot SponsorBlock.\n\nIf you add it to the main app list, Spot SponsorBlock will be turned off.")
                                     .setPositiveButton("Continue") { _, _ ->
                                         SettingsManager.isSpotEnabled = false
                                         applyCheck(true)
@@ -101,13 +101,13 @@ object AppSelectionDialog {
                 })
 
                 AlertDialog.Builder(activity)
-                    .setTitle("Select Apps (YouTube SponsorBlock)")
+                    .setTitle("Select Apps")
                     .setView(container)
                     .setPositiveButton("Save") { _, _ ->
                         SettingsManager.targetPackages = currentActiveSet
-                        AppLogger.log("[Settings] Saved YouTube packages. Count: ${currentActiveSet.size}")
+                        AppLogger.log("[SETTINGS] Saved target packages. Count: ${currentActiveSet.size}")
                         Toast.makeText(activity, "App list saved", Toast.LENGTH_SHORT).show()
-                        activity.sendBroadcast(Intent("me.jaival.sponsorskip.TOGGLE_SERVICE"))
+                        activity.sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(activity.packageName))
                     }
                     .setNegativeButton("Cancel", null)
                     .show()

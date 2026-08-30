@@ -12,7 +12,7 @@ class ShortcutToggleActivity : Activity() {
 
         val nextState = !SettingsManager.isServiceEnabled
         SettingsManager.isServiceEnabled = nextState
-        sendBroadcast(Intent("me.jaival.sponsorskip.TOGGLE_SERVICE"))
+        sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
 
         Toast.makeText(this, if (nextState) "Sponsor Skip: ON" else "Sponsor Skip: OFF", Toast.LENGTH_SHORT).show()
         finish()

@@ -155,14 +155,14 @@ class MoreActivity : AppCompatActivity() {
                         SettingsManager.targetPackages = updated
 
                         SettingsManager.isSpotEnabled = true
-                        sendBroadcast(Intent("me.jaival.sponsorskip.TOGGLE_SERVICE"))
+                        sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
                         Toast.makeText(this, "Enabled Spot SponsorBlock", Toast.LENGTH_SHORT).show()
                     }
                     .setNegativeButton("Cancel") { _, _ -> switchSpot.isChecked = false }
                     .show()
             } else {
                 SettingsManager.isSpotEnabled = isChecked
-                sendBroadcast(Intent("me.jaival.sponsorskip.TOGGLE_SERVICE"))
+                sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
             }
         }
 

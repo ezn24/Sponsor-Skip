@@ -53,9 +53,12 @@ object SettingsManager {
 
 
     const val SPOTIFY_PACKAGE = "com.spotify.music"
+    val BILIBILI_PACKAGES = setOf("tv.danmaku.bili", "com.bilibili.app.in")
+    val ACTION_TOGGLE_SERVICE = "${BuildConfig.APPLICATION_ID}.TOGGLE_SERVICE"
+    val ACTION_STATS_UPDATED = "${BuildConfig.APPLICATION_ID}.STATS_UPDATED"
 
     var targetPackages: Set<String>
-        get() = prefs.getStringSet("targetPackages", setOf("com.google.android.youtube")) ?: setOf("com.google.android.youtube")
+        get() = prefs.getStringSet("targetPackages", BILIBILI_PACKAGES) ?: BILIBILI_PACKAGES
         set(value) = prefs.edit().putStringSet("targetPackages", value).apply()
 
     private const val PREFS_NAME = "skipper_prefs"
@@ -245,7 +248,7 @@ object SettingsManager {
                 } else {
                     UpdateCheckWorker.cancel(appContext)
                 }
-                appContext.sendBroadcast(android.content.Intent("me.jaival.sponsorskip.STATS_UPDATED"))
+                appContext.sendBroadcast(android.content.Intent(ACTION_STATS_UPDATED).setPackage(BuildConfig.APPLICATION_ID))
             }
             val restoredPreRelease = if (::appContext.isInitialized) getPreReleaseSetting(appContext) else prefs.getBoolean("pre_release_updates", false)
             AppLogger.log("[BACKUP] Restored $count keys including statistics and update preferences (autoUpdate: $isAutoUpdateCheckEnabled, preRelease: $restoredPreRelease)")

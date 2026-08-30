@@ -53,7 +53,7 @@ class SkipperForegroundService : Service() {
             )
 
             val notification = NotificationCompat.Builder(this, channelId)
-                .setContentTitle("Sponsor Skip")
+                .setContentTitle("Sponsor Skip Bilibili")
                 .setContentText("Click here to disable this notification")
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setPriority(NotificationCompat.PRIORITY_LOW)

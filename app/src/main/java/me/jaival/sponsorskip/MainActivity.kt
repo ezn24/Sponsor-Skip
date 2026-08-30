@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
     Triple("intro", "Intermission / Intro Animation", "An interval without actual content. Could be a pause, static frame, or repeating animation. Does not include transitions containing information"),
     Triple("outro", "Endcards / Credits", "Credits or when the YouTube endcards appear. Not for conclusions with information"),
     Triple("preview", "Preview / Recap", "Collection of clips that show what is coming up or what happened in the video or in other videos of a series, where all information is repeated elsewhere"),
-    Triple("hook", "Hook / Greetings", "Narrated trailers for the upcoming video, greetings and goodbyes. Does not include sections that add additional content"),
+    Triple("exclusive_access", "Exclusive Access", "Content that is only available through early or exclusive access"),
+    Triple("padding", "Padding / Filler", "Scenes added only to pad the video length without adding useful content"),
     Triple("filler", "Tangent / Jokes", "Tangential scenes or jokes that are not required to understand the main content of the video. Does not include sections providing context or background details"),
     Triple("music_offtopic", "Music: Non-Music Section", "Only for use in music videos. Sections of music videos without music that are not already covered by another category")
   )
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
   
   private val liveStateReceiver = object : android.content.BroadcastReceiver() {
     override fun onReceive(context: android.content.Context?, intent: android.content.Intent?) {
-      if (intent?.action == "me.jaival.sponsorskip.TOGGLE_SERVICE") {
+      if (intent?.action == SettingsManager.ACTION_TOGGLE_SERVICE) {
         val isEnabled = SettingsManager.isServiceEnabled
         val masterSwitch = findViewById<com.google.android.material.materialswitch.MaterialSwitch>(R.id.switchMaster)
         if (masterSwitch?.isChecked != isEnabled) {
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         if (file.name.endsWith(".apk")) file.delete()
       }
     } catch (e: Exception) {}
-    val toggleFilter = android.content.IntentFilter("me.jaival.sponsorskip.TOGGLE_SERVICE")
+    val toggleFilter = android.content.IntentFilter(SettingsManager.ACTION_TOGGLE_SERVICE)
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
       registerReceiver(liveStateReceiver, toggleFilter, android.content.Context.RECEIVER_NOT_EXPORTED)
     } else {
@@ -145,7 +146,7 @@ class MainActivity : AppCompatActivity() {
       if (SettingsManager.isServiceEnabled != isChecked) {
         view.haptic()
         SettingsManager.isServiceEnabled = isChecked
-        sendBroadcast(Intent("me.jaival.sponsorskip.TOGGLE_SERVICE"))
+        sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
         updateGreyOutState(isChecked)
       }
     }
@@ -238,9 +239,9 @@ class MainActivity : AppCompatActivity() {
     if (SettingsManager.isPrivacyAccepted) { lifecycleScope.launch { UpdateManager.checkUpdate(this@MainActivity, false) } }
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      registerReceiver(statsReceiver, IntentFilter("me.jaival.sponsorskip.STATS_UPDATED"), Context.RECEIVER_NOT_EXPORTED)
+      registerReceiver(statsReceiver, IntentFilter(SettingsManager.ACTION_STATS_UPDATED), Context.RECEIVER_NOT_EXPORTED)
     } else {
-      registerReceiver(statsReceiver, IntentFilter("me.jaival.sponsorskip.STATS_UPDATED"))
+      registerReceiver(statsReceiver, IntentFilter(SettingsManager.ACTION_STATS_UPDATED))
     }
   }
 
@@ -272,7 +273,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun showPrivacyDialog() {
     if (privacyDialog?.isShowing == true) return
-    val message = "To keep things transparent and respect your privacy, here is exactly how the app works under the hood:\n\n1. Finding the Video: The app requires 'Notification Access' to securely read your device's active media player. This lets the app see the Title of the video you are watching. The app DOES NOT read your personal messages or other notifications.\n\n2. Getting the Video ID: Because the media player doesn't provide a direct link, the app searches the public YouTube website using the Title to grab the official 'Video ID'. However, no account data, logins, or cookies are sent.\n\n3. Skipping the segments: The app sends that Video ID to the community-run SponsorBlock API (sponsor.ajay.app) to get the skip timestamps.\n\n4. Local processing: The actual skipping happens entirely on your phone. The app never collects, store, share, or sell your viewing history.\n\nYou can know more from our Privacy Policy\n\nBy tapping 'Accept', you consent to our Privacy Policy."
+    val message = "To keep things transparent and respect your privacy, here is exactly how the app works under the hood:\n\n1. Finding the Video: The app requires 'Notification Access' to read the title, duration and playback position from bilibili's active media player. The app DOES NOT read your personal messages.\n\n2. Getting the Video ID: Because bilibili's media session does not expose the BVID, the app searches bilibili's public API using the title and verifies the result using the video duration. No account data, login or cookies are sent.\n\n3. Skipping the segments: The BVID and CID are sent to the community-run BilibiliSponsorBlock API (bsbsb.top) to get skip timestamps.\n\n4. Local processing: The actual skipping happens entirely on your phone. The app never collects, stores, shares or sells your viewing history.\n\nYou can know more from our Privacy Policy\n\nBy tapping 'Accept', you consent to our Privacy Policy."
     privacyDialog = AlertDialog.Builder(this).setTitle("Welcome to Sponsor Skip!").setMessage(message).setCancelable(false).setPositiveButton("Accept") { _, _ -> SettingsManager.isPrivacyAccepted = true; lifecycleScope.launch { UpdateManager.checkUpdate(this@MainActivity, false) } }.setNegativeButton("Decline") { _, _ -> finishAffinity() }.setNeutralButton("Privacy Policy", null).create()
     privacyDialog?.setOnShowListener {
       privacyDialog?.getButton(AlertDialog.BUTTON_NEUTRAL)?.setOnClickListener { view ->
@@ -543,7 +544,8 @@ class MainActivity : AppCompatActivity() {
                   .setView(container)
                   .setPositiveButton("Save") { _, _ ->
                       SettingsManager.targetPackages = selectedPackages
-                      AppLogger.log("[Settings] Saved target packages. Total selected: ${selectedPackages.size}")
+                      AppLogger.log("[SETTINGS] Saved target packages. Total selected: ${selectedPackages.size}")
+                      sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
                       Toast.makeText(this@MainActivity, "Target apps updated", Toast.LENGTH_SHORT).show()
                   }
                   .setNegativeButton("Cancel", null)
