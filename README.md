@@ -39,9 +39,7 @@
 
 <h2><a id="screenshots"></a>螢幕截圖</h2>
 
-<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot1.jpg" alt="首頁" width="30%" />
-<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot2.jpg" alt="設定頁面" width="30%" />
-<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot3.jpg" alt="其他設定" width="30%" />
+<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot1.jpg" alt="首頁" width="30%" /> <img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot2.jpg" alt="設定頁面" width="30%" /> <img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot3.jpg" alt="其他設定" width="30%" />
 
 ---
 
