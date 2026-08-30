@@ -4,7 +4,7 @@
 
 # Sponsor Skip for Bilibili
 
-### 基於 <a href="https://github.com/hanydd/BilibiliSponsorBlock">BilibiliSponsorBlock</a> 以及 <a herf="https://github.com/jaival-11/Sponsor-Skip">Sponsor-Skip</a> 的 Android 原生跳過工具
+### 基於 [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock) 與 [Sponsor-Skip](https://github.com/jaival-11/Sponsor-Skip) 開發的 Android 原生廣告／贊助片段跳過工具
 
 <br/>
 
