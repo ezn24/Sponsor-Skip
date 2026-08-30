@@ -8,7 +8,7 @@
         android:shortcutLongLabel="@string/shortcut_long_label">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="me.jaival.sponsorskip.bilibili"
-            android:targetClass="me.jaival.sponsorskip.ShortcutToggleActivity" />
+            android:targetPackage="io.github.ezn24.sponsorskip.bilibili"
+            android:targetClass="io.github.ezn24.sponsorskip.bilibili.ShortcutToggleActivity" />
     </shortcut>
 </shortcuts>

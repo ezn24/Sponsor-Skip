@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sponsor Skip Bilibili</string>
+    <string name="app_name">Sponsor Skip for Bilibili</string>
     <string name="tagline">BilibiliSponsorBlock for native Android</string>
     <string name="home">Home</string>
     <string name="settings">Settings</string>
@@ -21,7 +21,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="app_license">App License (GPLv3)</string>
     <string name="open_source_licenses">Open Source Licenses</string>
-    <string name="made_with_love">Made with ❤️ by Jaival</string>
+    <string name="made_with_love">Made with ❤️ by ezn24</string>
 
     <string name="reset_statistics">Reset Statistics</string>
     <string name="reset_statistics_message">Are you sure you want to reset your saved segments and time?</string>

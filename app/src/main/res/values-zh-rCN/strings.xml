@@ -1,48 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sponsor Skip Bilibili</string><string name="tagline">原生 Android 版 BilibiliSponsorBlock</string>
-    <string name="home">主页</string><string name="settings">设置</string><string name="navigate_up">向上导航</string>
-    <string name="enable_service">启用服务</string><string name="time_saved">节省时间</string>
-    <string name="stats_format">%1$d 个片段 | %2$s</string><string name="duration_format">%1$d 分 %2$d 秒</string>
-    <string name="version_format">版本 %1$s（点击检查更新）</string><string name="permissions">权限</string>
-    <string name="custom_apps">自定义应用</string><string name="custom_apps_beta">自定义应用  测试版 </string>
-    <string name="report_bugs">报告问题</string><string name="request_feature">功能建议</string><string name="app_page">应用主页</string>
-    <string name="contact_developer">联系开发者</string><string name="more">更多</string><string name="privacy_policy">隐私政策</string>
-    <string name="app_license">应用许可证（GPLv3）</string><string name="open_source_licenses">开源软件许可证</string>
-    <string name="made_with_love">由 Jaival 用 ❤️ 制作</string>
-    <string name="reset_statistics">重置统计数据</string><string name="reset_statistics_message">确定要重置已保存的片段数和时间吗？</string>
-    <string name="reset">重置</string><string name="cancel">取消</string><string name="close">关闭</string><string name="accept">接受</string><string name="decline">拒绝</string><string name="save">保存</string><string name="disable">停用</string><string name="continue_label">继续</string>
-    <string name="permission_required">需要相关权限才能启动服务。</string><string name="send_email">发送邮件</string><string name="unknown">未知</string>
-    <string name="failed_open_link">无法打开链接</string><string name="no_license_url">此软件库未提供许可证链接</string>
-    <string name="license_title">许可证与免责声明</string><string name="license_message">Sponsor Skip：自动跳过 YouTube 视频中的 SponsorBlock 片段\n版权所有 © 2026 Jaival\n\n本程序为自由软件：您可以依据自由软件基金会发布的 GNU 通用公共许可证第 3 版或任何后续版本重新发布和／或修改本程序。\n\n本程序的发布旨在希望其有用，但不提供任何担保，甚至不包含适销性或特定用途适用性的默示担保。详情请参阅 GNU 通用公共许可证。</string><string name="view_full_gpl">查看完整 GPLv3</string>
-    <string name="welcome_title">欢迎使用 Sponsor Skip！</string><string name="privacy_message">为了保持透明并尊重您的隐私，以下是应用的工作方式：\n\n1. 查找视频：应用需要“通知使用权”来读取 Bilibili 当前媒体播放器的标题、时长和播放位置。应用不会读取私人消息。\n\n2. 获取视频 ID：当媒体会话没有提供 BVID 时，应用会使用标题搜索 Bilibili 公共 API，并以时长核对结果。不会发送账号数据、登录信息或 Cookie。\n\n3. 跳过片段：应用会将 BVID 和必要时的 CID 发送至社区运营的 BilibiliSponsorBlock API（bsbsb.top），以取得跳过时间点。\n\n4. 本地处理：实际跳过操作完全在您的手机上完成。应用绝不会收集、存储、分享或出售您的观看记录。\n\n点击“接受”即表示您同意我们的隐私政策。</string>
-    <string name="off">关闭</string><string name="skip_automatically">自动跳过</string><string name="content_description_action">%1$s：%2$s</string>
-    <string name="category_sponsor">赞助广告</string><string name="category_sponsor_description">付费推广、付费推荐和直接广告，不包括自我推广或免费推荐。</string>
-    <string name="category_selfpromo">无偿／自我推广</string><string name="category_selfpromo_description">无偿或自我推广，包括商品、捐赠和合作信息。</string>
-    <string name="category_interaction">互动提醒</string><string name="category_interaction_description">在内容中途简短提醒观众点赞、订阅或关注。</string>
-    <string name="category_intro">间歇／开场动画</string><string name="category_intro_description">没有实际内容的间隔，例如停顿、静止画面或重复动画。</string>
-    <string name="category_outro">结束画面／鸣谢</string><string name="category_outro_description">鸣谢或 YouTube 结束画面出现的部分。</string>
-    <string name="category_preview">预览／回顾</string><string name="category_preview_description">展示即将出现内容，或回顾其他位置已重复信息的片段。</string><string name="category_exclusive_access">独家访问/抢先体验</string><string name="category_exclusive_access_description">仅用于对整个视频进行标记。适用于展示UP主免费或获得补贴后使用的产品、服务或场地的视频。</string><string name="category_padding">填充内容/前黑/后黑</string><string name="category_padding_description">搬运视频片头片尾的纯粹填充内容，如黑屏或无关画面，与视频主体内容无实际意义和关联。</string>
-    <string name="category_hook">引子／问候</string><string name="category_hook_description">不包含额外内容的预告旁白、问候和告别。</string>
-    <string name="category_filler">闲聊／玩笑</string><string name="category_filler_description">理解主要内容不需要的题外场景或玩笑。</string>
-    <string name="category_music_offtopic">音乐：非音乐部分</string><string name="category_music_offtopic_description">音乐视频中没有音乐，且未被其他类别涵盖的部分。</string>
-    <string name="select_apps">选择应用</string><string name="select_custom_apps">选择自定义应用</string><string name="loading_installed_apps">正在加载已安装应用…</string><string name="app_list_saved">应用列表已保存</string><string name="target_apps_updated">目标应用已更新</string>
-    <string name="app_conflict">应用冲突</string><string name="spotify_main_conflict">Spotify 目前已在 Spot SponsorBlock 中启用。\n\n如果将其加入主应用列表，将会关闭 Spot SponsorBlock。</string><string name="spotify_spot_conflict">Spotify 目前已在 YouTube SponsorBlock 主列表中选中。\n\n继续后将从该列表移除 Spotify，并启用 Spot SponsorBlock。</string><string name="disabled_spot">已停用 Spot SponsorBlock</string><string name="enabled_spot">已启用 Spot SponsorBlock</string>
-    <string name="notification_listener_status">通知使用权  %1$s</string><string name="post_notifications_status">发送通知  %1$s</string><string name="battery_status">电池优化\n（遇到检测问题时可能有帮助）\n%1$s</string><string name="unrestricted">✅（不受限制）</string><string name="optimized">⚠️（已优化）</string>
-    <string name="notification_listener_granted">已授予通知使用权</string><string name="post_notifications_granted">已授予发送通知权限</string>
-    <string name="battery_optimization">电池优化</string><string name="battery_optimization_message">如果应用在后台随机停止，请尝试关闭电池优化，让服务不受中断地运行。\n\n之后建议强行停止并重新打开应用，以确保稳定运行。</string><string name="battery_already_disabled">电池优化已关闭</string>
-    <string name="permission_help">授予权限时遇到问题？</string><string name="read_carefully">请仔细阅读</string><string name="restricted_permission_help">打开“应用信息”，点击顶部的 ⋮，然后选择“允许受限设置”，之后返回 Sponsor Skip。</string><string name="app_info">应用信息</string>
-    <string name="updates">更新</string><string name="check_updates">检查更新</string><string name="check_updates_description">自动检查应用更新，建议保持启用。</string><string name="prerelease_updates">预发布更新</string><string name="prerelease_updates_description">接收预发布版本，其中可能包含问题或运行不稳定。</string>
-    <string name="strict_search">严格搜索</string><string name="strict_search_description">使用严格搜索提高结果准确度，但某些标题可能无法匹配。</string><string name="spot_sponsorblock">Spot SponsorBlock</string><string name="spot_sponsorblock_description">适用于 Spotify 的 SponsorBlock</string>
-    <string name="foreground_service">前台服务</string><string name="foreground_service_description">如果检测不稳定，可运行前台服务，但可能消耗更多电量。</string><string name="skip_count_tracking">启用跳过次数统计</string><string name="skip_count_tracking_description">发送片段 UUID，为 SponsorBlock 排行榜贡献跳过次数。不会发送账号或个人信息。</string>
-    <string name="minimum_segment_duration">最短片段时长</string><string name="skip_offset">跳过偏移</string><string name="backup_restore">备份与恢复</string><string name="debug_logs">调试日志</string>
-    <string name="minimum_duration_title">最短片段时长</string><string name="minimum_duration_message">输入要跳过片段的最短时长（秒），更短的片段不会被跳过。</string><string name="minimum_duration_set">最短时长已设为 %1$s 秒</string>
-    <string name="skip_offset_title">跳过偏移</string><string name="skip_offset_message">输入跳过偏移（毫秒）：\n\n• 负数：在片段开始前跳过\n• 正数：在片段开始后跳过</string><string name="skip_offset_set">跳过偏移已设为 %1$d 毫秒</string><string name="earlier">− 提前</string><string name="later">+ 延后</string><string name="offset_hint">偏移（毫秒）</string>
-    <string name="backup_created">备份创建成功</string><string name="backup_failed">创建备份失败：%1$s</string><string name="restore_successful">备份恢复成功</string><string name="invalid_backup">无效的备份文件</string><string name="restore_failed">恢复备份失败：%1$s</string><string name="restart_required">需要重启</string><string name="restart_required_message">设置和统计数据已恢复，请重启应用以应用全部更改。</string><string name="restart">重启</string><string name="backup_settings_stats">备份设置和统计数据</string><string name="restore_settings_stats">恢复设置和统计数据</string><string name="on">开启</string><string name="later_button">稍后</string><string name="download">下载</string><string name="changelog">更新日志</string>
-    <string name="enable_detailed_logging">启用详细日志</string><string name="refresh">刷新</string><string name="copy">复制</string><string name="clear">清除</string><string name="redact_logs">隐去日志中的敏感信息</string><string name="redacted_logs_copied">已复制隐去敏感信息的日志！分享前请务必检查。</string><string name="raw_logs_copied">已复制原始日志！分享前请务必检查。</string><string name="clear_logs">清除日志</string><string name="clear_logs_message">确定要永久删除所有日志吗？</string><string name="logs_cleared">日志已清除</string><string name="log_empty">日志文件为空。</string><string name="log_read_error">读取日志失败：%1$s</string>
-    <string name="no_segments">此音频／视频没有可跳过片段</string><string name="video_id_error">错误：无法取得视频 ID</string><string name="segments_loaded">已加载 %1$d 个待跳过片段</string><string name="segments_fetch_error">获取片段失败</string><string name="skipped_multiple">已跳过多个片段</string><string name="skipped_category">已跳过：%1$s</string>
-    <string name="service_on">Sponsor Skip：已开启</string><string name="service_off">Sponsor Skip：已关闭</string><string name="tile_unavailable">需要通知使用权</string>
-    <string name="latest_version">当前已是最新版本！</string><string name="repo_no_releases">未找到代码仓库或尚无发布版本。</string><string name="release_no_apk">已找到发布版本，但未附带 APK。</string><string name="update_check_error">检查更新时出错。</string><string name="new_version_available">发现新版本</string><string name="update_available_message">当前版本为 v%1$s，可更新至 v%2$s。打开更新日志查看更改内容。</string><string name="open_changelog">打开更新日志</string><string name="download_update">下载更新</string><string name="downloading_update">正在下载 v%1$s，请在通知中查看进度</string><string name="signature_failed">更新失败：APK 签名验证失败，下载的文件不可信。</string><string name="download_failed">下载失败。</string><string name="foreground_channel">前台服务</string><string name="foreground_channel_description">保持 Sponsor Skip 运行</string><string name="foreground_notification_text">点击管理此通知</string><string name="update_channel">应用更新</string><string name="update_available">有可用更新</string><string name="update_notification_text">版本 %1$s 已发布，点击立即更新。</string><string name="downloading_version">正在下载 Sponsor Skip v%1$s</string>
-    <string name="shortcut_short_label">切换服务</string><string name="shortcut_long_label">切换 Sponsor Skip</string>
+    <string name="app_name">Sponsor Skip for Bilibili</string>
+    <string name="tagline">原生 Android 版 BilibiliSponsorBlock</string>
+    <string name="home">主页</string>
+    <string name="settings">设置</string>
+    <string name="navigate_up">向上导航</string>
+    <string name="enable_service">启用服务</string>
+    <string name="time_saved">节省时间</string>
+    <string name="stats_format">%1$d 个片段 | %2$s</string>
+    <string name="duration_format">%1$d 分 %2$d 秒</string>
+    <string name="version_format">版本 %1$s（点击检查更新）</string>
+    <string name="permissions">权限</string>
+    <string name="custom_apps">自定义应用</string>
+    <string name="custom_apps_beta">自定义应用  测试版 </string>
+    <string name="report_bugs">报告问题</string>
+    <string name="request_feature">功能建议</string>
+    <string name="app_page">应用主页</string>
+    <string name="contact_developer">联系开发者</string>
+    <string name="more">更多</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="app_license">应用许可证（GPLv3）</string>
+    <string name="open_source_licenses">开源软件许可证</string>
+    <string name="made_with_love">由 ezn24 用 ❤️ 制作</string>
+    <string name="reset_statistics">重置统计数据</string>
+    <string name="reset_statistics_message">确定要重置已保存的片段数和时间吗？</string>
+    <string name="reset">重置</string>
+    <string name="cancel">取消</string>
+    <string name="close">关闭</string>
+    <string name="accept">接受</string>
+    <string name="decline">拒绝</string>
+    <string name="save">保存</string>
+    <string name="disable">停用</string>
+    <string name="continue_label">继续</string>
+    <string name="permission_required">需要相关权限才能启动服务。</string>
+    <string name="send_email">发送邮件</string>
+    <string name="unknown">未知</string>
+    <string name="failed_open_link">无法打开链接</string>
+    <string name="no_license_url">此软件库未提供许可证链接</string>
+    <string name="license_title">许可证与免责声明</string>
+    <string name="license_message">Sponsor Skip：自动跳过 YouTube 视频中的 SponsorBlock 片段\n版权所有 © 2026 Jaival\n\n本程序为自由软件：您可以依据自由软件基金会发布的 GNU 通用公共许可证第 3 版或任何后续版本重新发布和／或修改本程序。\n\n本程序的发布旨在希望其有用，但不提供任何担保，甚至不包含适销性或特定用途适用性的默示担保。详情请参阅 GNU 通用公共许可证。</string>
+    <string name="view_full_gpl">查看完整 GPLv3</string>
+    <string name="welcome_title">欢迎使用 Sponsor Skip！</string>
+    <string name="privacy_message">为了保持透明并尊重您的隐私，以下是应用的工作方式：\n\n1. 查找视频：应用需要“通知使用权”来读取 Bilibili 当前媒体播放器的标题、时长和播放位置。应用不会读取私人消息。\n\n2. 获取视频 ID：当媒体会话没有提供 BVID 时，应用会使用标题搜索 Bilibili 公共 API，并以时长核对结果。不会发送账号数据、登录信息或 Cookie。\n\n3. 跳过片段：应用会将 BVID 和必要时的 CID 发送至社区运营的 BilibiliSponsorBlock API（bsbsb.top），以取得跳过时间点。\n\n4. 本地处理：实际跳过操作完全在您的手机上完成。应用绝不会收集、存储、分享或出售您的观看记录。\n\n点击“接受”即表示您同意我们的隐私政策。</string>
+    <string name="off">关闭</string>
+    <string name="skip_automatically">自动跳过</string>
+    <string name="content_description_action">%1$s：%2$s</string>
+    <string name="category_sponsor">赞助广告</string>
+    <string name="category_sponsor_description">付费推广、付费推荐和直接广告，不包括自我推广或免费推荐。</string>
+    <string name="category_selfpromo">无偿／自我推广</string>
+    <string name="category_selfpromo_description">无偿或自我推广，包括商品、捐赠和合作信息。</string>
+    <string name="category_interaction">互动提醒</string>
+    <string name="category_interaction_description">在内容中途简短提醒观众点赞、订阅或关注。</string>
+    <string name="category_intro">间歇／开场动画</string>
+    <string name="category_intro_description">没有实际内容的间隔，例如停顿、静止画面或重复动画。</string>
+    <string name="category_outro">结束画面／鸣谢</string>
+    <string name="category_outro_description">鸣谢或 YouTube 结束画面出现的部分。</string>
+    <string name="category_preview">预览／回顾</string>
+    <string name="category_preview_description">展示即将出现内容，或回顾其他位置已重复信息的片段。</string>
+    <string name="category_exclusive_access">独家访问/抢先体验</string>
+    <string name="category_exclusive_access_description">仅用于对整个视频进行标记。适用于展示UP主免费或获得补贴后使用的产品、服务或场地的视频。</string>
+    <string name="category_padding">填充内容/前黑/后黑</string>
+    <string name="category_padding_description">搬运视频片头片尾的纯粹填充内容，如黑屏或无关画面，与视频主体内容无实际意义和关联。</string>
+    <string name="category_hook">引子／问候</string>
+    <string name="category_hook_description">不包含额外内容的预告旁白、问候和告别。</string>
+    <string name="category_filler">闲聊／玩笑</string>
+    <string name="category_filler_description">理解主要内容不需要的题外场景或玩笑。</string>
+    <string name="category_music_offtopic">音乐：非音乐部分</string>
+    <string name="category_music_offtopic_description">音乐视频中没有音乐，且未被其他类别涵盖的部分。</string>
+    <string name="select_apps">选择应用</string>
+    <string name="select_custom_apps">选择自定义应用</string>
+    <string name="loading_installed_apps">正在加载已安装应用…</string>
+    <string name="app_list_saved">应用列表已保存</string>
+    <string name="target_apps_updated">目标应用已更新</string>
+    <string name="app_conflict">应用冲突</string>
+    <string name="spotify_main_conflict">Spotify 目前已在 Spot SponsorBlock 中启用。\n\n如果将其加入主应用列表，将会关闭 Spot SponsorBlock。</string>
+    <string name="spotify_spot_conflict">Spotify 目前已在 YouTube SponsorBlock 主列表中选中。\n\n继续后将从该列表移除 Spotify，并启用 Spot SponsorBlock。</string>
+    <string name="disabled_spot">已停用 Spot SponsorBlock</string>
+    <string name="enabled_spot">已启用 Spot SponsorBlock</string>
+    <string name="notification_listener_status">通知使用权  %1$s</string>
+    <string name="post_notifications_status">发送通知  %1$s</string>
+    <string name="battery_status">电池优化\n（遇到检测问题时可能有帮助）\n%1$s</string>
+    <string name="unrestricted">✅（不受限制）</string>
+    <string name="optimized">⚠️（已优化）</string>
+    <string name="notification_listener_granted">已授予通知使用权</string>
+    <string name="post_notifications_granted">已授予发送通知权限</string>
+    <string name="battery_optimization">电池优化</string>
+    <string name="battery_optimization_message">如果应用在后台随机停止，请尝试关闭电池优化，让服务不受中断地运行。\n\n之后建议强行停止并重新打开应用，以确保稳定运行。</string>
+    <string name="battery_already_disabled">电池优化已关闭</string>
+    <string name="permission_help">授予权限时遇到问题？</string>
+    <string name="read_carefully">请仔细阅读</string>
+    <string name="restricted_permission_help">打开“应用信息”，点击顶部的 ⋮，然后选择“允许受限设置”，之后返回 Sponsor Skip。</string>
+    <string name="app_info">应用信息</string>
+    <string name="updates">更新</string>
+    <string name="check_updates">检查更新</string>
+    <string name="check_updates_description">自动检查应用更新，建议保持启用。</string>
+    <string name="prerelease_updates">预发布更新</string>
+    <string name="prerelease_updates_description">接收预发布版本，其中可能包含问题或运行不稳定。</string>
+    <string name="strict_search">严格搜索</string>
+    <string name="strict_search_description">使用严格搜索提高结果准确度，但某些标题可能无法匹配。</string>
+    <string name="spot_sponsorblock">Spot SponsorBlock</string>
+    <string name="spot_sponsorblock_description">适用于 Spotify 的 SponsorBlock</string>
+    <string name="foreground_service">前台服务</string>
+    <string name="foreground_service_description">如果检测不稳定，可运行前台服务，但可能消耗更多电量。</string>
+    <string name="skip_count_tracking">启用跳过次数统计</string>
+    <string name="skip_count_tracking_description">发送片段 UUID，为 SponsorBlock 排行榜贡献跳过次数。不会发送账号或个人信息。</string>
+    <string name="minimum_segment_duration">最短片段时长</string>
+    <string name="skip_offset">跳过偏移</string>
+    <string name="backup_restore">备份与恢复</string>
+    <string name="debug_logs">调试日志</string>
+    <string name="minimum_duration_title">最短片段时长</string>
+    <string name="minimum_duration_message">输入要跳过片段的最短时长（秒），更短的片段不会被跳过。</string>
+    <string name="minimum_duration_set">最短时长已设为 %1$s 秒</string>
+    <string name="skip_offset_title">跳过偏移</string>
+    <string name="skip_offset_message">输入跳过偏移（毫秒）：\n\n• 负数：在片段开始前跳过\n• 正数：在片段开始后跳过</string>
+    <string name="skip_offset_set">跳过偏移已设为 %1$d 毫秒</string>
+    <string name="earlier">− 提前</string>
+    <string name="later">+ 延后</string>
+    <string name="offset_hint">偏移（毫秒）</string>
+    <string name="backup_created">备份创建成功</string>
+    <string name="backup_failed">创建备份失败：%1$s</string>
+    <string name="restore_successful">备份恢复成功</string>
+    <string name="invalid_backup">无效的备份文件</string>
+    <string name="restore_failed">恢复备份失败：%1$s</string>
+    <string name="restart_required">需要重启</string>
+    <string name="restart_required_message">设置和统计数据已恢复，请重启应用以应用全部更改。</string>
+    <string name="restart">重启</string>
+    <string name="backup_settings_stats">备份设置和统计数据</string>
+    <string name="restore_settings_stats">恢复设置和统计数据</string>
+    <string name="on">开启</string>
+    <string name="later_button">稍后</string>
+    <string name="download">下载</string>
+    <string name="changelog">更新日志</string>
+    <string name="enable_detailed_logging">启用详细日志</string>
+    <string name="refresh">刷新</string>
+    <string name="copy">复制</string>
+    <string name="clear">清除</string>
+    <string name="redact_logs">隐去日志中的敏感信息</string>
+    <string name="redacted_logs_copied">已复制隐去敏感信息的日志！分享前请务必检查。</string>
+    <string name="raw_logs_copied">已复制原始日志！分享前请务必检查。</string>
+    <string name="clear_logs">清除日志</string>
+    <string name="clear_logs_message">确定要永久删除所有日志吗？</string>
+    <string name="logs_cleared">日志已清除</string>
+    <string name="log_empty">日志文件为空。</string>
+    <string name="log_read_error">读取日志失败：%1$s</string>
+    <string name="no_segments">此音频／视频没有可跳过片段</string>
+    <string name="video_id_error">错误：无法取得视频 ID</string>
+    <string name="segments_loaded">已加载 %1$d 个待跳过片段</string>
+    <string name="segments_fetch_error">获取片段失败</string>
+    <string name="skipped_multiple">已跳过多个片段</string>
+    <string name="skipped_category">已跳过：%1$s</string>
+    <string name="service_on">Sponsor Skip：已开启</string>
+    <string name="service_off">Sponsor Skip：已关闭</string>
+    <string name="tile_unavailable">需要通知使用权</string>
+    <string name="latest_version">当前已是最新版本！</string>
+    <string name="repo_no_releases">未找到代码仓库或尚无发布版本。</string>
+    <string name="release_no_apk">已找到发布版本，但未附带 APK。</string>
+    <string name="update_check_error">检查更新时出错。</string>
+    <string name="new_version_available">发现新版本</string>
+    <string name="update_available_message">当前版本为 v%1$s，可更新至 v%2$s。打开更新日志查看更改内容。</string>
+    <string name="open_changelog">打开更新日志</string>
+    <string name="download_update">下载更新</string>
+    <string name="downloading_update">正在下载 v%1$s，请在通知中查看进度</string>
+    <string name="signature_failed">更新失败：APK 签名验证失败，下载的文件不可信。</string>
+    <string name="download_failed">下载失败。</string>
+    <string name="foreground_channel">前台服务</string>
+    <string name="foreground_channel_description">保持 Sponsor Skip 运行</string>
+    <string name="foreground_notification_text">点击管理此通知</string>
+    <string name="update_channel">应用更新</string>
+    <string name="update_available">有可用更新</string>
+    <string name="update_notification_text">版本 %1$s 已发布，点击立即更新。</string>
+    <string name="downloading_version">正在下载 Sponsor Skip v%1$s</string>
+    <string name="shortcut_short_label">切换服务</string>
+    <string name="shortcut_long_label">切换 Sponsor Skip</string>
     <string name="bilibili_video_id_error">错误：无法取得 Bilibili 视频 ID</string>
 </resources>

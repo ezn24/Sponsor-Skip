@@ -1,265 +1,425 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/jaival-11/Sponsor-Skip/refs/heads/main/assets/graphics/icon.png" alt="Sponsor Skip app icon" width="200" />
+<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/graphics/icon.png" alt="Sponsor Skip for Bilibili 應用程式圖示" width="200" />
 
-# Sponsor Skip
+# Sponsor Skip for Bilibili
 
-### <a href="https://github.com/ajayyy/SponsorBlock">SponsorBlock</a> for native android
-
-<br/>
-
-[![Latest release](https://img.shields.io/github/v/release/jaival-11/Sponsor-Skip?style=for-the-badge&labelColor=0d1117)](https://github.com/jaival-11/Sponsor-Skip/releases/latest) [![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge&labelColor=0d1117&color=EA7233)](https://github.com/jaival-11/Sponsor-Skip/blob/main/LICENSE)
-
-[![Official Wiki](https://img.shields.io/badge/Listed_on-SponsorBlock_Wiki-2ea44f?style=for-the-badge&labelColor=0d1117)](https://github.com/ajayyy/SponsorBlock/wiki/Android)
+### 基於 <a href="https://github.com/hanydd/BilibiliSponsorBlock">BilibiliSponsorBlock</a> 以及 <a herf="https://github.com/jaival-11/Sponsor-Skip">Sponsor-Skip</a> 的 Android 原生跳過工具
 
 <br/>
 
-[![Follow on X](https://img.shields.io/badge/techironic11-1da1f2?style=for-the-badge&labelColor=0d1117&logo=x)](https://x.com/techironic11)[![Telegram Channel](https://img.shields.io/badge/Telegram-Join-0088cc?style=for-the-badge&labelColor=0d1117&logo=telegram)](https://t.me/techironic)[![Email Support](https://img.shields.io/badge/Email-Contact_Me-db4437?style=for-the-badge&labelColor=0d1117&logo=gmail)](mailto:jaival7909@gmail.com)
+[![Latest release](https://img.shields.io/github/v/release/ezn24/Sponsor-Skip?style=for-the-badge\&labelColor=0d1117)](https://github.com/ezn24/Sponsor-Skip/releases/latest)
+[![License](https://img.shields.io/badge/License-GPL--3.0-blue?style=for-the-badge\&labelColor=0d1117\&color=EA7233)](https://github.com/ezn24/Sponsor-Skip/blob/bilibili/LICENSE)
 
 <br/>
 
-[**Download**](#where-to-get-it) · [**Features**](#features) · [**Support**](#bug-reports--feature-suggestions)
+[**下載**](#下載) · [**功能**](#功能) · [**問題回報**](#問題回報與功能建議)
 
 ---
 
-## Table of Contents
+## 目錄
 
-| Section | Description |
-| :--- | :--- |
-| [Features](#features) | What the app can do |
-| [How It Works](#how-it-works) | The technical workflow |
-| [Where to Get It (Download)](#where-to-get-it) | Download links for the latest stable APK |
-| [Build from Source](#build-from-source) | Prerequisites and compilation instructions |
-| [Contributions](#contributions) | Guidelines for contributing to the repository |
-| [Bug Reports & Feature Suggestions](#bug-reports--feature-suggestions) | How to report issues or request new features |
-| [Under the Hood](#under-the-hood-for-developers) | Tech stack and  core architecture |
-| [Attributions & Credits](#attributions--credits) | Acknowledgments of third-party tools and creators |
-| [Privacy Policy](#privacy-policy) | Link to the complete Privacy Policy |
-| [Disclaimer](#disclaimer) | Terms of service, liability, and disclosures |
-| [License](#license) | GNU General Public License v3.0 details |
+| 章節                      | 說明                                        |
+| :---------------------- | :---------------------------------------- |
+| [功能](#功能)               | Sponsor Skip for Bilibili 可以做什麼                        |
+| [運作方式](#運作方式)           | Sponsor Skip for Bilibili 的基本工作流程                      |
+| [下載](#下載)               | 取得最新版本                                    |
+| [從原始碼建置](#從原始碼建置)       | 建置環境與編譯方式                                 |
+| [貢獻](#貢獻)               | 如何參與專案開發                                  |
+| [問題回報與功能建議](#問題回報與功能建議) | 回報錯誤或提出新功能                                |
+| [技術資訊](#技術資訊)           | 使用技術與核心架構                                 |
+| [致謝](#致謝)               | BilibiliSponsorBlock、SponsorBlock 與其他開源專案 |
+| [隱私權](#隱私權)             | 隱私權政策                                     |
+| [免責聲明](#免責聲明)           | 第三方關係、責任與使用條款                             |
+| [授權條款](#授權條款)           | GNU General Public License v3.0           |
 
 </div>
 
 ---
 
-<h2><a id="screenshots"></a>Screenshots</h2>
+<h2><a id="screenshots"></a>螢幕截圖</h2>
 
-<img src="https://raw.githubusercontent.com/jaival-11/Sponsor-Skip/refs/heads/main/assets/screenshots/Screenshot1.jpg" alt="Home tab" width="30%" /> <img src="https://raw.githubusercontent.com/jaival-11/Sponsor-Skip/refs/heads/main/assets/screenshots/Screenshot2.jpg" alt="Settings Tab" width="30%" /> <img src="https://raw.githubusercontent.com/jaival-11/Sponsor-Skip/refs/heads/main/assets/screenshots/Screenshot3.jpg" alt="Additional settings" width="30%" />
-
----
-
-## Features
-
-* **Stock YouTube Support:** Works directly with the official, unmodded YouTube app. No root access, patching, or third-party clients required.
-* **Multi-app support:** Other than official youtube app, you can select other apps to implement Sponsor Skip for those apps too.
-* **Spot Sponsorblock:** Skip segments from podcast on spotify with Spot Sponsorblock, enable it from settings.
-* **Granular Segment Control:** Fully customize your viewing experience. Choose to automatically skip or ignore any of the standard SponsorBlock categories:
-  * Sponsors
-  * Unpaid / Self Promotion
-  * Interaction Reminder
-  * Intermission / Intro Animation
-  * Endcards / Credits
-  * Preview / Recap
-  * Hook / Greetings
-  * Tangent / Jokes
-  * Music: Non-Music Section
-* **Time Saved Tracking:** Keep a count of exactly how many segments you have skipped and the total time you have saved. You can reset the count by tapping on it.
-* **Backup & Restore:** Easily backup and restore your preferences and statistics.
-* **Strict Search:** Optional strict search to make results more accurate.
-* **Quick Settings Tile & shortcut:** Quick tile and app shortcut to quickly toggle the service.
-* **Minimum segment duration:** Set minimum duration, so that segments shorter them are skipped for skipping (pun intended).
-* **Skip offset:** Set offsets to skip segment early or late. Helps devices where segment skip a few ms later.
-* **Modern & Lightweight UI:** Built with a clean, Material Design aesthetic with monet themeing. 
-* **Privacy Respecting:** It runs locally on your device and does not communicate with unnecessary third parties. No data is collected by developer. For more info refer to [Privacy Policy](#privacy-policy)
+<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot1.jpg" alt="首頁" width="30%" />
+<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot2.jpg" alt="設定頁面" width="30%" />
+<img src="https://raw.githubusercontent.com/ezn24/Sponsor-Skip/refs/heads/bilibili/assets/screenshots/Screenshot3.jpg" alt="其他設定" width="30%" />
 
 ---
 
-## How it works
+## 功能
 
-**Sponsor Skip** uses a clever workaround relying on Android's native media APIs.
+* **Bilibili 支援：** 為 Android 上的 Bilibili 播放體驗加入自動跳過功能，不需要修改 Bilibili APK。
 
-1. **Detection:** Using the `Notification Listener Service`, the app silently monitors your system's active media sessions. When it detects that the official YouTube app or other apps selected by user is playing a video, it securely reads the media metadata to identify the video.
-2. **Video ID:** Since `Notification Listener Service` does not provide video id, the app makes a request to `youtube.com` to get the video id.
-3. **Fetching Data:** The app takes that video ID and pings the crowd-sourced [SponsorBlock API](https://sponsor.ajay.app/) to download the exact timestamps of any known segments.
-4. **Execution:** As you watch the video, Sponsor Skip tracks the playback progress. The exact millisecond the video enters a blocked segment, the app seamlessly skips the segment.
+* **基於 BilibiliSponsorBlock：** 使用由 [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock) 專案及其社群建立的片段資料。
 
-For more technical details refer [Under the Hood](#under-the-hood-for-developers)
+* **自動跳過片段：** 播放影片時，自動取得已由社群標記的時間片段，並在播放進度進入指定片段時跳至片段結尾。
+
+* **多種片段分類：** 可依照 BilibiliSponsorBlock 提供的片段分類，自訂需要跳過或忽略的內容，例如：
+
+  * 廣告
+  * 無償／自我推廣
+  * 柔性推廣／品牌合作
+  * 三連／訂閱提醒
+  * 精彩時刻／重點
+  * 過場／開場動畫
+  * 鳴謝／結束畫面
+  * 回顧／概要
+  * 離題閒聊／玩笑
+  * 音樂：非音樂部分
+  * 靜音片段
+
+* **節省時間統計：** 記錄已跳過的片段數量以及累計節省的觀看時間。
+
+* **備份與還原：** 備份及還原應用程式偏好設定與統計資料。
+
+* **最短片段長度：** 可設定片段最低長度，忽略過短的片段。
+
+* **跳過偏移：** 可調整跳過時間點，使跳轉稍微提前或延後，以因應不同裝置的播放延遲。
+
+* **快速開關：** 可快速啟用或停用 Sponsor Skip for Bilibili 服務。
+
+* **現代化介面：** 採用簡潔的 Android Material Design 介面。
+
+* **開放原始碼：** Sponsor Skip for Bilibili 以 GPL-3.0 授權釋出，原始碼公開於 GitHub。
 
 ---
 
-## Where to Get It
+## 運作方式
 
-You can download the latest compiled APK directly from the following sources:
+**Sponsor Skip for Bilibili** 將 Android 的媒體控制能力與 [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock) 提供的片段資料結合，在不修改 Bilibili 應用程式本體的情況下，自動跳過已標記的影片片段。
+
+基本流程如下：
+
+1. **偵測播放狀態**
+
+   Sponsor Skip for Bilibili 透過 Android 系統提供的媒體相關 API，偵測目前正在播放的 Bilibili 內容以及播放進度。
+
+2. **識別影片**
+
+   應用程式根據目前取得的媒體資訊，解析對應的 Bilibili 影片。
+
+3. **取得片段資料**
+
+   Sponsor Skip for Bilibili 向 BilibiliSponsorBlock 所使用的服務取得該影片已由社群提交的片段時間資訊。
+
+4. **監控播放進度**
+
+   播放影片期間，Sponsor Skip for Bilibili 持續追蹤目前的播放位置。
+
+5. **自動跳過**
+
+   當播放位置進入設定為自動跳過的片段時，Sponsor Skip for Bilibili 會透過 Android 媒體控制功能將播放位置移動至該片段結尾。
+
+因此不需要修改 Bilibili APK，也不需要將 Sponsor Skip for Bilibili 直接注入 Bilibili 應用程式。
+
+---
+
+## 下載
+
+你可以從 GitHub Releases 下載最新版本：
 
 <table>
   <tr>
-    <th align="center">GitHub</th>
-    <th align="center">Obtainium </th>  </tr>
+    <th align="center">GitHub Releases</th>
+  </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/jaival-11/Sponsor-Skip/releases/latest">
-        <img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="Download from GitHub Releases" height="70">
-      </a>
-    </td>    
-    <td align="center">
-      <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/jaival-11/Sponsor-Skip">
-        <img src="https://raw.githubusercontent.com/ImranR98/Obtainium/refs/heads/main/assets/graphics/badge_obtainium.png" alt="Download from Obtainium" height="70">
+      <a href="https://github.com/ezn24/Sponsor-Skip/releases/latest">
+        <img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png" alt="從 GitHub Releases 下載" height="70">
       </a>
     </td>
   </tr>
-  <tr>
-   <th align="center">Orion Store</th>
-   <th align="center">SafeHaven Store</th>
-  </tr>
-  <tr>
-   <td align="center">
-    <a href="https://rookieenough.github.io/Orion-Data/redirect.html?id=sponsor-skip">
-     <img src="https://raw.githubusercontent.com/RookieEnough/Orion-Store/refs/heads/main/assets/orion-badge.png" alt="Download from Orion Store" height="50">
-    </a>
-   </td>
-   <td align="center">
-   <a href="https://store.colourswift.com/app/me.jaival.sponsorskip">
-    <img src="https://store.colourswift.com/badge.svg" alt="Download from SafeHaven Store" height="50">
-   </a>
-   </td>
-  </tr>
 </table>
-        
-## Build from Source
 
-If you prefer to compile the app yourself, you can easily build it from the source code using the included Gradle wrapper. 
+> 建議僅從本專案的 GitHub Releases 或其他明確列出的官方來源下載 APK。
 
-**Prerequisites:**
+---
+
+## 從原始碼建置
+
+如果你希望自行編譯 Sponsor Skip for Bilibili，可以使用專案內附的 Gradle Wrapper。
+
+### 必要環境
+
 * **Git**
-* **JDK 17** (or higher)
-* **Android SDK** (Command Line Tools)
-* The `ANDROID_HOME` environment variable must be set, pointing to your SDK path.
-* You must have accepted the SDK licenses (e.g., running `yes | sdkmanager --licenses`).  
-*(Note: You can even build this directly on an Android device using Termux, just like the developer does!)*
+* **JDK 17** 或更新版本
+* **Android SDK**
+* 已設定 `ANDROID_HOME`
+* 已接受 Android SDK 授權條款
 
-```
-git clone https://github.com/jaival-11/Sponsor-Skip.git
+例如：
+
+```bash
+git clone -b bilibili https://github.com/ezn24/Sponsor-Skip.git
 cd Sponsor-Skip
 ./gradlew assembleDebug
 ```
----
 
-## Contributions
-
-Contributions from the open-source community are always welcome!
-
-1. Fork the repository.
-2. Create a new branch for your feature (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'feat: add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request!
+編譯完成後，可在 Gradle 對應的輸出目錄找到 APK。
 
 ---
 
-## Bug Reports & Feature Suggestions
+## 貢獻
 
-Encountered a bug or have a brilliant idea to make Sponsor Skip even better?
+歡迎參與 Sponsor Skip for Bilibili 的開發。
 
-* **Found a bug?**   
+1. Fork 此 Repository。
+2. 建立新的功能分支。
 
-Open a [Bug Report](https://github.com/jaival-11/Sponsor-Skip/issues/new?template=bug_report.yml) using the provided template. Please include necessary and correct details so it can be squashed quickly!  
+```bash
+git checkout -b feature/AmazingFeature
+```
 
-* **Have an idea?**   
+3. 提交修改。
 
-Open a [Feature Request](https://github.com/jaival-11/Sponsor-Skip/issues/new?template=feature_request.yml) using the provided template and describe how it would improve the app. 
+```bash
+git commit -m "feat: add AmazingFeature"
+```
 
-### Got any questions?
+4. 推送分支。
 
-Feel free to open an [Issue](https://github.com/jaival-11/Sponsor-Skip/issues/new/choose)
+```bash
+git push origin feature/AmazingFeature
+```
 
-*You can also contact me directly via details given at the top, though [GitHub Issues](https://github.com/jaival-11/Sponsor-Skip/issues) is preferred.*
+5. 建立 Pull Request。
 
----
+如果修改涉及 BilibiliSponsorBlock 的 API、片段分類或資料格式，建議同時參考：
 
-## Under the hood (for Developers)
-
-### Tech Stack
-
-![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Coroutines](https://img.shields.io/badge/Coroutines-0095D5?style=for-the-badge&logo=kotlin&logoColor=white)
-![Material Design](https://img.shields.io/badge/Material_Design-757575?style=for-the-badge&logo=materialdesign&logoColor=white)
-![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
-![SponsorBlock API](https://img.shields.io/badge/SponsorBlock_API-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
-
-### Core Architecture & APIs
-
-Sponsor Skip is built entirely in **Kotlin** and leverages modern Android development practices to interact seamlessly with external applications without requiring root or modifications.
-
-* **Media Session Interception:** The app utilizes the `NotificationListenerService` API. Instead of looking at notification text, it binds to the active media session created by the official YouTube app or other apps selected by the user. This allows Sponsor Skip to securely read the Video Title from the media metadata and track the current playback position in milliseconds.
-* **Title-to-ID Resolution (HTML Scraping):** Because Android's media session does not expose the raw video URL, the app must resolve the Title into an ID manually. It does this by executing a silent, unauthenticated background search:
-  1. The app URL-encodes the title and fires a native `OkHttp` GET request to `https://www.youtube.com/results?search_query=[TITLE]`.
-  2. To prevent YouTube from blocking the request, the app spoofs a standard desktop Chrome `User-Agent`.
-  3. The app downloads the raw HTML of the search page and runs a Regular Expression (`/watch\?v=([a-zA-Z0-9_-]{11})`) to instantly scrape the 11-character Video ID of the top result.
-* **SponsorBlock API:** Once a video ID is intercepted, the app makes an asynchronous network request to the public [SponsorBlock API](https://sponsor.ajay.app/) to retrieve the start and end timestamps for all community-submitted segments.
-* **MediaController Transport Controls:** When the player's current position enters a blocked segment, Sponsor Skip uses `MediaController.TransportControls.seekTo()` to command the Android OS to fast-forward the YouTube player to the end of the segment.
-* **Asynchronous Execution:** All network calls, background polling, and update checks are handled cleanly via **Kotlin Coroutines** (`lifecycleScope.launch`) to ensure the main UI thread is never blocked.
+* [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock)
+* [BilibiliSponsorBlock API 文件](https://github.com/hanydd/BilibiliSponsorBlock/wiki/API)
 
 ---
 
-## Attributions & Credits
+## 問題回報與功能建議
 
-This project stands on the shoulders of giants. A massive thank you to the developers, projects, and communities that make Sponsor Skip possible:
+### 發現問題？
 
-### 1. The Core Engine
-* **[SponsorBlock](https://sponsor.ajay.app/):** Created by Ajay Ramachandran ([@ajayyy](https://github.com/ajayyy)) and the incredible SponsorBlock community. This app acts as a specialized Android client for their public API. Without their massive, crowd-sourced database of video timestamps, Sponsor Skip would not exist.
+請前往：
 
-### 2. Third-Party Libraries
-* **[AboutLibraries](https://github.com/mikepenz/AboutLibraries):** By Mike Penz. This fantastic library powers the in-app "Credits" screen, elegantly parsing and displaying all the open-source licenses for the Android components used in this project.
-* **[Kotlin](https://kotlinlang.org/) & [Android Jetpack](https://developer.android.com/jetpack):** By JetBrains and Google. These provide the robust framework, UI components, and background coroutines that allow the app to run efficiently.
+[GitHub Issues](https://github.com/ezn24/Sponsor-Skip/issues)
 
-### 3. Assets & Tools
-* **[Material Design Icons](https://fonts.google.com/icons):** By Google. All the internal UI iconography (the Settings gear, Feature Request flask, Contact email, etc.) are sourced from the official Material Design vector library.
+建立 Issue，並盡可能提供：
 
-### 4. Networking & Infrastructure
-* **[OkHttp](https://square.github.io/okhttp/) & [Gson](https://github.com/google/gson):** (By Square and Google). Essential libraries utilized for handling the asynchronous network requests and JSON parsing required to communicate with the SponsorBlock API.
+* Sponsor Skip for Bilibili 版本
+* Android 版本
+* Bilibili 版本
+* 裝置型號
+* 問題重現步驟
+* 預期結果
+* 實際結果
+* 必要的錯誤記錄或截圖
 
-### 5. [Sameera](https://github.com/sameerasw)
-* Thank you for helping out with app documentation and guidance related to publishing 🙏❤️.
+### 有功能建議？
 
+同樣可以透過：
 
----
+[GitHub Issues](https://github.com/ezn24/Sponsor-Skip/issues)
 
-## Privacy Policy
-Read complete Privacy Policy (human-readable) at [Privacy Policy](PRIVACY.md).  
-  
-*The [Privacy Policy](PRIVACY.md) was last updated on 23rd July, 2026.*
-
----
-
-## Disclaimer
-
-### Third-Party Affiliation
-Sponsor Skip is an independent, open-source project. It is not affiliated with, endorsed by, or in any way officially connected to YouTube, Google LLC, or the SponsorBlock project. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
-
-### Liability and Warranty
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. 
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
-
-See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-### User Responsibility & Platform ToS
-This application acts as a neutral, local automation tool. By utilizing Sponsor Skip, you acknowledge that you are solely responsible for ensuring your use of the software complies with the Terms of Service of any third-party platforms accessed (including YouTube and SponsorBlock). The developer assumes no liability for any account restrictions, IP bans, or ToS violations incurred by the user.
-
-###  AI Disclaimer
-This project— including the codebase, documentation was developed with the assistance of AI. (P.s. I am new to this, apologies!)
+提出你的想法。
 
 ---
 
-## License
-Sponsor Skip is licensed under the [GNU General Public License v3.0](LICENSE).  
-Copyright © 2026 Jaival
+## 技術資訊
+
+### 技術堆疊
+
+![Kotlin](https://img.shields.io/badge/Kotlin-%237F52FF.svg?style=for-the-badge\&logo=kotlin\&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge\&logo=android\&logoColor=white)
+![Coroutines](https://img.shields.io/badge/Coroutines-0095D5?style=for-the-badge\&logo=kotlin\&logoColor=white)
+![Material Design](https://img.shields.io/badge/Material_Design-757575?style=for-the-badge\&logo=materialdesign\&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge\&logo=Gradle\&logoColor=white)
+![BilibiliSponsorBlock](https://img.shields.io/badge/BilibiliSponsorBlock-00A1D6?style=for-the-badge)
+
+### 核心架構
+
+Sponsor Skip for Bilibili 主要以 **Kotlin** 開發，利用 Android 系統提供的媒體功能，在不修改 Bilibili 本體的情況下控制目前正在播放的內容。
+
+核心流程可以概括為：
+
+* **媒體播放偵測**
+
+  取得目前 Android 系統中的媒體播放資訊，判斷 Bilibili 是否正在播放影片。
+
+* **影片識別**
+
+  根據媒體資訊解析目前播放的 Bilibili 影片，以取得查詢片段資料所需的影片識別資訊。
+
+* **BilibiliSponsorBlock API**
+
+  取得由 BilibiliSponsorBlock 社群提交的片段時間與分類資料。
+
+  API 文件：
+
+  https://github.com/hanydd/BilibiliSponsorBlock/wiki/API
+
+* **播放進度追蹤**
+
+  Sponsor Skip for Bilibili 在背景追蹤目前影片播放位置，判斷是否即將或已經進入需要跳過的片段。
+
+* **Android MediaController**
+
+  當播放位置進入符合設定的片段時，透過 Android 的媒體控制功能將播放器跳轉至片段結束位置。
+
+* **非同步處理**
+
+  網路請求、播放狀態追蹤以及其他背景工作透過 Kotlin Coroutines 執行，避免阻塞主 UI 執行緒。
+
+---
+
+## BilibiliSponsorBlock
+
+Sponsor Skip for Bilibili 的 Bilibili 支援是基於：
+
+**[hanydd/BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock)**
+
+BilibiliSponsorBlock 是一個移植自 SponsorBlock、專門針對 Bilibili 設計的開源專案。
+
+它建立了一套由社群共同維護的影片片段資料，讓使用者可以標記並跳過：
+
+* 廣告
+* 自我推廣
+* 品牌合作
+* 三連提醒
+* 開場／過場
+* 結束畫面
+* 回顧
+* 離題內容
+* 其他可分類片段
+
+BilibiliSponsorBlock 同時提供 API，使其他客戶端及第三方專案可以使用這些社群建立的片段資料。
+
+### BilibiliSponsorBlock API
+
+正式服務：
+
+```text
+https://bsbsb.top/api/
+```
+
+API 文件：
+
+https://github.com/hanydd/BilibiliSponsorBlock/wiki/API
+
+### 資料庫
+
+BilibiliSponsorBlock 亦公開其片段資料供二次開發使用：
+
+```text
+https://download.bsbsb.top/database.zip
+```
+
+---
+
+## 致謝
+
+Sponsor Skip for Bilibili 的 Bilibili 功能建立在多個開源專案及社群成果之上。
+
+### 1. Sponsor-Skip
+
+**[Sponsor-Skip](https://github.com/hanydd/BilibiliSponsorBlock)**
+由 [Jaival-11](https://github.com/jaival-11) 建立及維護
+
+基於其項目並經過修改以適配 BiliBili，總體原理類似
+
+### 2. BilibiliSponsorBlock
+
+**[BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock)**
+由 [hanydd](https://github.com/hanydd) 建立及維護。
+
+Sponsor Skip for Bilibili 的 Bilibili 片段資料、分類概念以及相關 API 支援基於 BilibiliSponsorBlock。
+
+感謝 BilibiliSponsorBlock 的開發者以及所有協助提交、修正與審核影片片段的社群成員。
+
+### 3. SponsorBlock
+
+**[SponsorBlock](https://github.com/ajayyy/SponsorBlock)**
+由 [Ajay Ramachandran](https://github.com/ajayyy) 建立。
+
+BilibiliSponsorBlock 本身移植並改造自 SponsorBlock。SponsorBlock 建立了社群協作標記影片片段的核心概念及原始實作。
+
+因此 Sponsor Skip for Bilibili 亦間接受益於 SponsorBlock 及其開源社群的工作。
+
+### 4. Kotlin 與 Android
+
+**[Kotlin](https://kotlinlang.org/)** 與 **[Android](https://developer.android.com/)**
+
+提供 Sponsor Skip for Bilibili 所使用的程式語言、Android API、背景處理機制與應用程式架構。
+
+### 5. Android Jetpack
+
+**[Android Jetpack](https://developer.android.com/jetpack)**
+
+提供 Android 應用程式生命週期、UI 與其他基礎架構元件。
+
+### 5. Material Design
+
+**[Material Design](https://m3.material.io/)**
+
+Sponsor Skip for Bilibili 的介面與部分圖示使用 Material Design 系統。
+
+---
+
+## 隱私權
+
+Sponsor Skip for Bilibili 不以蒐集使用者資料為目的。
+
+應用程式可能需要存取必要的 Android 系統媒體資訊以及向 Bilibili、BilibiliSponsorBlock 或相關服務發出網路請求，以識別影片及取得片段資料。
+
+完整內容請參閱：
+
+[Privacy Policy](PRIVACY.md)
+
+---
+
+## 免責聲明
+
+### BilibiliSponsorBlock
+
+Sponsor Skip for Bilibili 使用或相容於由 BilibiliSponsorBlock 提供的片段資料及相關服務。
+
+BilibiliSponsorBlock 是獨立的第三方開源專案。
+
+Sponsor Skip for Bilibili 與 BilibiliSponsorBlock 的原作者之間不存在官方從屬關係，除非另有明確說明。
+
+### 責任與保固
+
+本程式為自由軟體，你可以依照自由軟體基金會發布的 **GNU General Public License** 條款重新散布及／或修改本程式；授權版本為 GPL 第 3 版或任何較新的版本。
+
+本程式的發布目的是希望它能夠有所幫助，但**不提供任何形式的保固**，包括但不限於適售性或特定用途適用性的默示保固。
+
+詳細內容請參閱 GNU General Public License。
+
+### 使用者責任與平台服務條款
+
+Sponsor Skip for Bilibili 是一個本機自動化及媒體控制工具。
+
+使用本軟體即代表你理解並同意：
+
+* 你有責任確認自己的使用方式符合 Bilibili 及其他第三方服務的使用條款。
+* 第三方平台可能隨時修改 API、播放器行為、服務條款或技術限制。
+* Sponsor Skip for Bilibili 無法保證任何第三方服務永久相容。
+* 專案維護者不對因使用本軟體造成的帳號限制、服務中斷、資料損失或其他損害負責。
+
+---
+
+## 授權條款
+
+Sponsor Skip for Bilibili 採用 [GNU General Public License v3.0](LICENSE) 授權。
+
+本專案包含或衍生自其他 GPL 授權專案之概念或程式碼時，相關內容仍應遵循其原始授權條款與著作權聲明。
+
+特別感謝：
+
+* [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock)
+* [SponsorBlock](https://github.com/ajayyy/SponsorBlock)
+* 
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by [Jaival](https://github.com/jaival-11)**
+**基於 [BilibiliSponsorBlock](https://github.com/hanydd/BilibiliSponsorBlock)**
+
+**Maintained by [ezn24](https://github.com/ezn24)**
 
 </div>

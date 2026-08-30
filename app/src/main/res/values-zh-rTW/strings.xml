@@ -1,20 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sponsor Skip Bilibili</string><string name="tagline">原生 Android 版 BilibiliSponsorBlock</string>
-    <string name="home">首頁</string><string name="settings">設定</string><string name="navigate_up">向上瀏覽</string>
-    <string name="enable_service">啟用服務</string><string name="time_saved">節省時間</string><string name="stats_format">%1$d 個片段 | %2$s</string><string name="duration_format">%1$d 分 %2$d 秒</string><string name="version_format">版本 %1$s（點按檢查更新）</string>
-    <string name="permissions">權限</string><string name="custom_apps">自訂應用程式</string><string name="custom_apps_beta">自訂應用程式  測試版 </string><string name="report_bugs">回報問題</string><string name="request_feature">功能建議</string><string name="app_page">應用程式頁面</string><string name="contact_developer">聯絡開發者</string><string name="more">更多</string><string name="privacy_policy">隱私權政策</string><string name="app_license">應用程式授權（GPLv3）</string><string name="open_source_licenses">開放原始碼授權</string><string name="made_with_love">由 Jaival 用 ❤️ 製作</string>
-    <string name="reset_statistics">重設統計資料</string><string name="reset_statistics_message">確定要重設已儲存的片段數和時間嗎？</string><string name="reset">重設</string><string name="cancel">取消</string><string name="close">關閉</string><string name="accept">接受</string><string name="decline">拒絕</string><string name="save">儲存</string><string name="disable">停用</string><string name="continue_label">繼續</string><string name="permission_required">需要相關權限才能啟動服務。</string><string name="send_email">傳送電子郵件</string><string name="unknown">未知</string><string name="failed_open_link">無法開啟連結</string><string name="no_license_url">此程式庫未提供授權連結</string>
-    <string name="license_title">授權與免責聲明</string><string name="license_message">Sponsor Skip：自動跳過 YouTube 影片中的 SponsorBlock 片段\n著作權所有 © 2026 Jaival\n\n本程式為自由軟體：您可以依據自由軟體基金會發布的 GNU 通用公共授權條款第 3 版或任何後續版本，重新發布和／或修改本程式。\n\n本程式的發布旨在希望其有用，但不提供任何擔保，甚至不包含適售性或特定用途適用性的默示擔保。詳情請參閱 GNU 通用公共授權條款。</string><string name="view_full_gpl">查看完整 GPLv3</string>
-    <string name="welcome_title">歡迎使用 Sponsor Skip！</string><string name="privacy_message">為保持透明並尊重您的隱私，以下是應用程式的運作方式：\n\n1. 尋找影片：應用程式需要「通知存取權」來讀取 Bilibili 目前媒體播放器的標題、時間和播放位置。應用程式不會讀取私人訊息。\n\n2. 取得影片 ID：當媒體工作階段沒有提供 BVID 時，應用程式會使用標題搜尋 Bilibili 公開 API，並以時間核對結果。不會傳送帳號資料、登入資訊或 Cookie。\n\n3. 跳過片段：應用程式會將 BVID 和必要時的 CID 傳送至社群營運的 BilibiliSponsorBlock API（bsbsb.top），以取得跳過時間點。\n\n4. 本機處理：實際跳過操作完全在您的手機上完成。應用程式絕不會收集、儲存、分享或出售您的觀看記錄。\n\n點按「接受」即表示您同意我們的隱私權政策。</string>
-    <string name="off">關閉</string><string name="skip_automatically">自動跳過</string><string name="content_description_action">%1$s：%2$s</string><string name="category_sponsor">贊助廣告</string><string name="category_sponsor_description">付費推廣、付費推薦和直接廣告，不包括自我推廣或免費推薦。</string><string name="category_selfpromo">無償／自我推廣</string><string name="category_selfpromo_description">無償或自我推廣，包括商品、捐款和合作資訊。</string><string name="category_interaction">互動提醒</string><string name="category_interaction_description">在內容中途簡短提醒觀眾按讚、訂閱或追蹤。</string><string name="category_intro">間歇／開場動畫</string><string name="category_intro_description">沒有實際內容的間隔，例如停頓、靜止畫面或重複動畫。</string><string name="category_outro">結束畫面／鳴謝</string><string name="category_outro_description">鳴謝或影片結束畫面出現的部分。</string><string name="category_preview">預覽／回顧</string><string name="category_preview_description">展示即將出現的內容，或回顧其他位置已重複資訊的片段。</string><string name="category_exclusive_access">獨家訪問/搶先體驗</string><string name="category_exclusive_access_description">僅用於標記整個影片。適用於影片展示創作者免費或獲得補助使用的產品或者服務，包括軟廣、產品推廣或者品牌推廣。</string><string name="category_padding">填充內容/前黑/後黑</string><string name="category_padding_description">搬運影片片頭片尾的純粹填充內容，如黑屏或無關畫面，與影片主體內容無實際意義和關聯。</string><string name="category_hook">引子／問候</string><string name="category_hook_description">不包含額外內容的預告旁白、問候和告別。</string><string name="category_filler">閒聊／玩笑</string><string name="category_filler_description">理解主要內容不需要的題外場景或玩笑。</string><string name="category_music_offtopic">音樂：非音樂部分</string><string name="category_music_offtopic_description">音樂影片中沒有音樂，且未被其他類別涵蓋的部分。</string>
-    <string name="select_apps">選擇應用程式</string><string name="select_custom_apps">選擇自訂應用程式</string><string name="loading_installed_apps">正在載入已安裝的應用程式…</string><string name="app_list_saved">應用程式清單已儲存</string><string name="target_apps_updated">目標應用程式已更新</string><string name="app_conflict">應用程式衝突</string><string name="spotify_main_conflict">Spotify 目前已在 Spot SponsorBlock 中啟用。\n\n如果將其加入主要應用程式清單，Spot SponsorBlock 將會關閉。</string><string name="spotify_spot_conflict">Spotify 目前已在 YouTube SponsorBlock 主要清單中選取。\n\n繼續後將從該清單移除 Spotify，並啟用 Spot SponsorBlock。</string><string name="disabled_spot">已停用 Spot SponsorBlock</string><string name="enabled_spot">已啟用 Spot SponsorBlock</string>
-    <string name="notification_listener_status">通知存取權  %1$s</string><string name="post_notifications_status">傳送通知  %1$s</string><string name="battery_status">電池最佳化\n（遇到偵測問題時可能有幫助）\n%1$s</string><string name="unrestricted">✅（不受限制）</string><string name="optimized">⚠️（已最佳化）</string><string name="notification_listener_granted">已授予通知存取權</string><string name="post_notifications_granted">已授予傳送通知權限</string><string name="battery_optimization">電池最佳化</string><string name="battery_optimization_message">如果應用程式在背景隨機停止，請嘗試關閉電池最佳化，讓服務不受中斷地執行。\n\n之後建議強制停止並重新開啟應用程式，以確保穩定執行。</string><string name="battery_already_disabled">電池最佳化已關閉</string><string name="permission_help">授予權限時遇到問題？</string><string name="read_carefully">請仔細閱讀</string><string name="restricted_permission_help">開啟「應用程式資訊」，點按頂部的 ⋮，然後選擇「允許受限設定」，之後返回 Sponsor Skip。</string><string name="app_info">應用程式資訊</string>
-    <string name="updates">更新</string><string name="check_updates">檢查更新</string><string name="check_updates_description">自動檢查應用程式更新，建議保持啟用。</string><string name="prerelease_updates">預先發布更新</string><string name="prerelease_updates_description">接收預先發布版本，其中可能包含問題或執行不穩定。</string><string name="strict_search">嚴格搜尋</string><string name="strict_search_description">使用嚴格搜尋提高結果準確度，但某些標題可能無法比對。</string><string name="spot_sponsorblock">Spot SponsorBlock</string><string name="spot_sponsorblock_description">適用於 Spotify 的 SponsorBlock</string><string name="foreground_service">前景服務</string><string name="foreground_service_description">如果偵測不穩定，可執行前景服務，但可能消耗更多電力。</string><string name="skip_count_tracking">啟用跳過次數追蹤</string><string name="skip_count_tracking_description">傳送片段 UUID，為 SponsorBlock 排行榜貢獻跳過次數。不會傳送帳號或個人資訊。</string><string name="minimum_segment_duration">最短片段時間</string><string name="skip_offset">跳過偏移</string><string name="backup_restore">備份與還原</string><string name="debug_logs">偵錯記錄</string>
-    <string name="minimum_duration_title">最短片段時間</string><string name="minimum_duration_message">輸入要跳過片段的最短時間（秒），更短的片段不會被跳過。</string><string name="minimum_duration_set">最短時間已設為 %1$s 秒</string><string name="skip_offset_title">跳過偏移</string><string name="skip_offset_message">輸入跳過偏移（毫秒）：\n\n• 負數：在片段開始前跳過\n• 正數：在片段開始後跳過</string><string name="skip_offset_set">跳過偏移已設為 %1$d 毫秒</string><string name="earlier">− 提前</string><string name="later">+ 延後</string><string name="offset_hint">偏移（毫秒）</string><string name="backup_created">備份建立成功</string><string name="backup_failed">建立備份失敗：%1$s</string><string name="restore_successful">備份還原成功</string><string name="invalid_backup">無效的備份檔案</string><string name="restore_failed">還原備份失敗：%1$s</string><string name="restart_required">需要重新啟動</string><string name="restart_required_message">設定和統計資料已還原，請重新啟動應用程式以套用所有變更。</string><string name="restart">重新啟動</string><string name="backup_settings_stats">備份設定和統計資料</string><string name="restore_settings_stats">還原設定和統計資料</string><string name="on">開啟</string><string name="later_button">稍後</string><string name="download">下載</string><string name="changelog">更新記錄</string>
-    <string name="enable_detailed_logging">啟用詳細記錄</string><string name="refresh">重新整理</string><string name="copy">複製</string><string name="clear">清除</string><string name="redact_logs">隱去記錄中的敏感資訊</string><string name="redacted_logs_copied">已複製隱去敏感資訊的記錄！分享前請務必檢查。</string><string name="raw_logs_copied">已複製原始記錄！分享前請務必檢查。</string><string name="clear_logs">清除記錄</string><string name="clear_logs_message">確定要永久刪除所有記錄嗎？</string><string name="logs_cleared">記錄已清除</string><string name="log_empty">記錄檔案是空的。</string><string name="log_read_error">讀取記錄失敗：%1$s</string>
-    <string name="no_segments">此音訊／影片沒有可跳過片段</string><string name="video_id_error">錯誤：無法取得影片 ID</string><string name="segments_loaded">已載入 %1$d 個待跳過片段</string><string name="segments_fetch_error">取得片段失敗</string><string name="skipped_multiple">已跳過多個片段</string><string name="skipped_category">已跳過：%1$s</string><string name="service_on">Sponsor Skip：已開啟</string><string name="service_off">Sponsor Skip：已關閉</string><string name="tile_unavailable">需要通知存取權</string>
-    <string name="latest_version">目前已是最新版本！</string><string name="repo_no_releases">找不到程式碼儲存庫或尚無發布版本。</string><string name="release_no_apk">已找到發布版本，但未附上 APK。</string><string name="update_check_error">檢查更新時發生錯誤。</string><string name="new_version_available">發現新版本</string><string name="update_available_message">目前版本為 v%1$s，可更新至 v%2$s。開啟更新記錄查看變更內容。</string><string name="open_changelog">開啟更新記錄</string><string name="download_update">下載更新</string><string name="downloading_update">正在下載 v%1$s，請在通知中查看進度</string><string name="signature_failed">更新失敗：APK 簽章驗證失敗，下載的檔案不可信。</string><string name="download_failed">下載失敗。</string><string name="foreground_channel">前景服務</string><string name="foreground_channel_description">保持 Sponsor Skip 執行</string><string name="foreground_notification_text">點按管理此通知</string><string name="update_channel">應用程式更新</string><string name="update_available">有可用更新</string><string name="update_notification_text">版本 %1$s 已發布，點按立即更新。</string><string name="downloading_version">正在下載 Sponsor Skip v%1$s</string>
-    <string name="shortcut_short_label">切換服務</string><string name="shortcut_long_label">切換 Sponsor Skip</string>
+    <string name="app_name">Sponsor Skip for Bilibili</string>
+    <string name="tagline">原生 Android 版 BilibiliSponsorBlock</string>
+    <string name="home">首頁</string>
+    <string name="settings">設定</string>
+    <string name="navigate_up">向上瀏覽</string>
+    <string name="enable_service">啟用服務</string>
+    <string name="time_saved">節省時間</string>
+    <string name="stats_format">%1$d 個片段 | %2$s</string>
+    <string name="duration_format">%1$d 分 %2$d 秒</string>
+    <string name="version_format">版本 %1$s（點按檢查更新）</string>
+    <string name="permissions">權限</string>
+    <string name="custom_apps">自訂應用程式</string>
+    <string name="custom_apps_beta">自訂應用程式  測試版 </string>
+    <string name="report_bugs">回報問題</string>
+    <string name="request_feature">功能建議</string>
+    <string name="app_page">應用程式頁面</string>
+    <string name="contact_developer">聯絡開發者</string>
+    <string name="more">更多</string>
+    <string name="privacy_policy">隱私權政策</string>
+    <string name="app_license">應用程式授權（GPLv3）</string>
+    <string name="open_source_licenses">開放原始碼授權</string>
+    <string name="made_with_love">由 Jaival 用 ❤️ 製作</string>
+    <string name="reset_statistics">重設統計資料</string>
+    <string name="reset_statistics_message">確定要重設已儲存的片段數和時間嗎？</string>
+    <string name="reset">重設</string>
+    <string name="cancel">取消</string>
+    <string name="close">關閉</string>
+    <string name="accept">接受</string>
+    <string name="decline">拒絕</string>
+    <string name="save">儲存</string>
+    <string name="disable">停用</string>
+    <string name="continue_label">繼續</string>
+    <string name="permission_required">需要相關權限才能啟動服務。</string>
+    <string name="send_email">傳送電子郵件</string>
+    <string name="unknown">未知</string>
+    <string name="failed_open_link">無法開啟連結</string>
+    <string name="no_license_url">此程式庫未提供授權連結</string>
+    <string name="license_title">授權與免責聲明</string>
+    <string name="license_message">Sponsor Skip：自動跳過 YouTube 影片中的 SponsorBlock 片段\n著作權所有 © 2026 Jaival\n\n本程式為自由軟體：您可以依據自由軟體基金會發布的 GNU 通用公共授權條款第 3 版或任何後續版本，重新發布和／或修改本程式。\n\n本程式的發布旨在希望其有用，但不提供任何擔保，甚至不包含適售性或特定用途適用性的默示擔保。詳情請參閱 GNU 通用公共授權條款。</string>
+    <string name="view_full_gpl">查看完整 GPLv3</string>
+    <string name="welcome_title">歡迎使用 Sponsor Skip！</string>
+    <string name="privacy_message">為保持透明並尊重您的隱私，以下是應用程式的運作方式：\n\n1. 尋找影片：應用程式需要「通知存取權」來讀取 Bilibili 目前媒體播放器的標題、時間和播放位置。應用程式不會讀取私人訊息。\n\n2. 取得影片 ID：當媒體工作階段沒有提供 BVID 時，應用程式會使用標題搜尋 Bilibili 公開 API，並以時間核對結果。不會傳送帳號資料、登入資訊或 Cookie。\n\n3. 跳過片段：應用程式會將 BVID 和必要時的 CID 傳送至社群營運的 BilibiliSponsorBlock API（bsbsb.top），以取得跳過時間點。\n\n4. 本機處理：實際跳過操作完全在您的手機上完成。應用程式絕不會收集、儲存、分享或出售您的觀看記錄。\n\n點按「接受」即表示您同意我們的隱私權政策。</string>
+    <string name="off">關閉</string>
+    <string name="skip_automatically">自動跳過</string>
+    <string name="content_description_action">%1$s：%2$s</string>
+    <string name="category_sponsor">贊助/恰飯</string>
+    <string name="category_sponsor_description">付費推廣、付費推薦和直接廣告，不包括自我推廣或免費推薦。</string>
+    <string name="category_selfpromo">無償／自我推廣</string>
+    <string name="category_selfpromo_description">無償或自我推廣，包括商品、捐款和合作資訊。</string>
+    <string name="category_interaction">三連/互動提醒</string>
+    <string name="category_interaction_description">在內容中途簡短提醒觀眾按讚、訂閱或追蹤。</string>
+    <string name="category_intro">間歇／開場動畫</string>
+    <string name="category_intro_description">沒有實際內容的間隔，例如停頓、靜止畫面或重複動畫。</string>
+    <string name="category_outro">結束畫面／鳴謝</string>
+    <string name="category_outro_description">鳴謝或影片結束畫面出現的部分。</string>
+    <string name="category_preview">預覽／回顧</string>
+    <string name="category_preview_description">展示即將出現的內容，或回顧其他位置已重複資訊的片段。</string>
+    <string name="category_exclusive_access">獨家訪問/搶先體驗</string>
+    <string name="category_exclusive_access_description">僅用於標記整個影片。適用於影片展示創作者免費或獲得補助使用的產品或者服務，包括軟廣、產品推廣或者品牌推廣。</string>
+    <string name="category_padding">填充內容/前黑/後黑</string>
+    <string name="category_padding_description">搬運影片片頭片尾的純粹填充內容，如黑屏或無關畫面，與影片主體內容無實際意義和關聯。</string>
+    <string name="category_hook">引子／問候</string>
+    <string name="category_hook_description">不包含額外內容的預告旁白、問候和告別。</string>
+    <string name="category_filler">閒聊／玩笑</string>
+    <string name="category_filler_description">理解主要內容不需要的題外場景或玩笑。</string>
+    <string name="category_music_offtopic">音樂：非音樂部分</string>
+    <string name="category_music_offtopic_description">音樂影片中沒有音樂，且未被其他類別涵蓋的部分。</string>
+    <string name="select_apps">選擇應用程式</string>
+    <string name="select_custom_apps">選擇自訂應用程式</string>
+    <string name="loading_installed_apps">正在載入已安裝的應用程式…</string>
+    <string name="app_list_saved">應用程式清單已儲存</string>
+    <string name="target_apps_updated">目標應用程式已更新</string>
+    <string name="app_conflict">應用程式衝突</string>
+    <string name="spotify_main_conflict">Spotify 目前已在 Spot SponsorBlock 中啟用。\n\n如果將其加入主要應用程式清單，Spot SponsorBlock 將會關閉。</string>
+    <string name="spotify_spot_conflict">Spotify 目前已在 YouTube SponsorBlock 主要清單中選取。\n\n繼續後將從該清單移除 Spotify，並啟用 Spot SponsorBlock。</string>
+    <string name="disabled_spot">已停用 Spot SponsorBlock</string>
+    <string name="enabled_spot">已啟用 Spot SponsorBlock</string>
+    <string name="notification_listener_status">通知存取權  %1$s</string>
+    <string name="post_notifications_status">傳送通知  %1$s</string>
+    <string name="battery_status">電池最佳化\n（遇到偵測問題時可能有幫助）\n%1$s</string>
+    <string name="unrestricted">✅（不受限制）</string>
+    <string name="optimized">⚠️（已最佳化）</string>
+    <string name="notification_listener_granted">已授予通知存取權</string>
+    <string name="post_notifications_granted">已授予傳送通知權限</string>
+    <string name="battery_optimization">電池最佳化</string>
+    <string name="battery_optimization_message">如果應用程式在背景隨機停止，請嘗試關閉電池最佳化，讓服務不受中斷地執行。\n\n之後建議強制停止並重新開啟應用程式，以確保穩定執行。</string>
+    <string name="battery_already_disabled">電池最佳化已關閉</string>
+    <string name="permission_help">授予權限時遇到問題？</string>
+    <string name="read_carefully">請仔細閱讀</string>
+    <string name="restricted_permission_help">開啟「應用程式資訊」，點按頂部的 ⋮，然後選擇「允許受限設定」，之後返回 Sponsor Skip。</string>
+    <string name="app_info">應用程式資訊</string>
+    <string name="updates">更新</string>
+    <string name="check_updates">檢查更新</string>
+    <string name="check_updates_description">自動檢查應用程式更新，建議保持啟用。</string>
+    <string name="prerelease_updates">預先發布更新</string>
+    <string name="prerelease_updates_description">接收預先發布版本，其中可能包含問題或執行不穩定。</string>
+    <string name="strict_search">嚴格搜尋</string>
+    <string name="strict_search_description">使用嚴格搜尋提高結果準確度，但某些標題可能無法比對。</string>
+    <string name="spot_sponsorblock">Spot SponsorBlock</string>
+    <string name="spot_sponsorblock_description">適用於 Spotify 的 SponsorBlock</string>
+    <string name="foreground_service">前景服務</string>
+    <string name="foreground_service_description">如果偵測不穩定，可執行前景服務，但可能消耗更多電力。</string>
+    <string name="skip_count_tracking">啟用跳過次數追蹤</string>
+    <string name="skip_count_tracking_description">傳送片段 UUID，為 SponsorBlock 排行榜貢獻跳過次數。不會傳送帳號或個人資訊。</string>
+    <string name="minimum_segment_duration">最短片段時間</string>
+    <string name="skip_offset">跳過偏移</string>
+    <string name="backup_restore">備份與還原</string>
+    <string name="debug_logs">偵錯記錄</string>
+    <string name="minimum_duration_title">最短片段時間</string>
+    <string name="minimum_duration_message">輸入要跳過片段的最短時間（秒），更短的片段不會被跳過。</string>
+    <string name="minimum_duration_set">最短時間已設為 %1$s 秒</string>
+    <string name="skip_offset_title">跳過偏移</string>
+    <string name="skip_offset_message">輸入跳過偏移（毫秒）：\n\n• 負數：在片段開始前跳過\n• 正數：在片段開始後跳過</string>
+    <string name="skip_offset_set">跳過偏移已設為 %1$d 毫秒</string>
+    <string name="earlier">− 提前</string>
+    <string name="later">+ 延後</string>
+    <string name="offset_hint">偏移（毫秒）</string>
+    <string name="backup_created">備份建立成功</string>
+    <string name="backup_failed">建立備份失敗：%1$s</string>
+    <string name="restore_successful">備份還原成功</string>
+    <string name="invalid_backup">無效的備份檔案</string>
+    <string name="restore_failed">還原備份失敗：%1$s</string>
+    <string name="restart_required">需要重新啟動</string>
+    <string name="restart_required_message">設定和統計資料已還原，請重新啟動應用程式以套用所有變更。</string>
+    <string name="restart">重新啟動</string>
+    <string name="backup_settings_stats">備份設定和統計資料</string>
+    <string name="restore_settings_stats">還原設定和統計資料</string>
+    <string name="on">開啟</string>
+    <string name="later_button">稍後</string>
+    <string name="download">下載</string>
+    <string name="changelog">更新記錄</string>
+    <string name="enable_detailed_logging">啟用詳細記錄</string>
+    <string name="refresh">重新整理</string>
+    <string name="copy">複製</string>
+    <string name="clear">清除</string>
+    <string name="redact_logs">隱去記錄中的敏感資訊</string>
+    <string name="redacted_logs_copied">已複製隱去敏感資訊的記錄！分享前請務必檢查。</string>
+    <string name="raw_logs_copied">已複製原始記錄！分享前請務必檢查。</string>
+    <string name="clear_logs">清除記錄</string>
+    <string name="clear_logs_message">確定要永久刪除所有記錄嗎？</string>
+    <string name="logs_cleared">記錄已清除</string>
+    <string name="log_empty">記錄檔案是空的。</string>
+    <string name="log_read_error">讀取記錄失敗：%1$s</string>
+    <string name="no_segments">此音訊／影片沒有可跳過片段</string>
+    <string name="video_id_error">錯誤：無法取得影片 ID</string>
+    <string name="segments_loaded">已載入 %1$d 個待跳過片段</string>
+    <string name="segments_fetch_error">取得片段失敗</string>
+    <string name="skipped_multiple">已跳過多個片段</string>
+    <string name="skipped_category">已跳過：%1$s</string>
+    <string name="service_on">Sponsor Skip：已開啟</string>
+    <string name="service_off">Sponsor Skip：已關閉</string>
+    <string name="tile_unavailable">需要通知存取權</string>
+    <string name="latest_version">目前已是最新版本！</string>
+    <string name="repo_no_releases">找不到程式碼儲存庫或尚無發布版本。</string>
+    <string name="release_no_apk">已找到發布版本，但未附上 APK。</string>
+    <string name="update_check_error">檢查更新時發生錯誤。</string>
+    <string name="new_version_available">發現新版本</string>
+    <string name="update_available_message">目前版本為 v%1$s，可更新至 v%2$s。開啟更新記錄查看變更內容。</string>
+    <string name="open_changelog">開啟更新記錄</string>
+    <string name="download_update">下載更新</string>
+    <string name="downloading_update">正在下載 v%1$s，請在通知中查看進度</string>
+    <string name="signature_failed">更新失敗：APK 簽章驗證失敗，下載的檔案不可信。</string>
+    <string name="download_failed">下載失敗。</string>
+    <string name="foreground_channel">前景服務</string>
+    <string name="foreground_channel_description">保持 Sponsor Skip 執行</string>
+    <string name="foreground_notification_text">點按管理此通知</string>
+    <string name="update_channel">應用程式更新</string>
+    <string name="update_available">有可用更新</string>
+    <string name="update_notification_text">版本 %1$s 已發布，點按立即更新。</string>
+    <string name="downloading_version">正在下載 Sponsor Skip v%1$s</string>
+    <string name="shortcut_short_label">切換服務</string>
+    <string name="shortcut_long_label">切換 Sponsor Skip</string>
     <string name="bilibili_video_id_error">錯誤：無法取得 Bilibili 影片 ID</string>
 </resources>
