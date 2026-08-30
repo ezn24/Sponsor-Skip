@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package me.jaival.sponsorskip
+package io.github.ezn24.sponsorskip.bilibili
 
 import android.content.Intent
 import android.os.Bundle
@@ -128,9 +128,7 @@ class MoreActivity : AppCompatActivity() {
         switchStrict?.setOnCheckedChangeListener { _, isChecked ->
             SettingsManager.isStrictSearchEnabled = isChecked
         }
-        findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() 
-
-}
+        findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
 
         fun View.haptic() = this.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
 

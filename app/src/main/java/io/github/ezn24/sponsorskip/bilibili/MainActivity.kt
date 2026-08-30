@@ -2,7 +2,7 @@
  * Sponsor Skip - Auto-skips SponsorBlock segments in YouTube videos
  * Copyright © 2026 Jaival
  */
-package me.jaival.sponsorskip
+package io.github.ezn24.sponsorskip.bilibili
 
 import android.content.BroadcastReceiver
 import android.content.ComponentName
@@ -419,11 +419,11 @@ class MainActivity : AppCompatActivity() {
     val clickableSponsorBlock = object : ClickableSpan() {
       override fun onClick(widget: View) {
         widget.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ajayyy/SponsorBlock")))
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/hanydd/BilibiliSponsorBlock")))
       }
     }
-    val sponsorBlockStart = taglineText.indexOf("SponsorBlock").coerceAtLeast(0)
-    spannableTagline.setSpan(clickableSponsorBlock, sponsorBlockStart, sponsorBlockStart + 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    val sponsorBlockStart = taglineText.indexOf("BilibiliSponsorBlock").coerceAtLeast(0)
+    spannableTagline.setSpan(clickableSponsorBlock, sponsorBlockStart, sponsorBlockStart + 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     tvTagline.text = spannableTagline
     tvTagline.movementMethod = LinkMovementMethod.getInstance()
     
@@ -433,10 +433,10 @@ class MainActivity : AppCompatActivity() {
     val clickableSpan = object : ClickableSpan() {
       override fun onClick(widget: View) {
         widget.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11")))
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ezn24")))
       }
     }
-    val start = text.indexOf("Jaival")
+    val start = text.indexOf("ezn24").coerceAtLeast(0)
     spannable.setSpan(clickableSpan, start, start + 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     footer.text = spannable
     footer.movementMethod = LinkMovementMethod.getInstance()

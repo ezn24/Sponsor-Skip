@@ -22,11 +22,11 @@ plugins {
 }
 
 android {
-    namespace 'me.jaival.sponsorskip'
+    namespace 'io.github.ezn24.sponsorskip.bilibili'
     compileSdk 34
 
     defaultConfig {
-        applicationId "me.jaival.sponsorskip.bilibili"
+        applicationId "io.github.ezn24.sponsorskip.bilibili"
         minSdk 26
         targetSdk 34
         versionCode 15

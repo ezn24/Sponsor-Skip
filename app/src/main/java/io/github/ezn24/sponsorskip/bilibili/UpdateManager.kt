@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package me.jaival.sponsorskip
+package io.github.ezn24.sponsorskip.bilibili
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

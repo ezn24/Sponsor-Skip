@@ -1,4 +1,9 @@
-package me.jaival.sponsorskip
+/*
+ * Sponsor Skip - Auto-skips SponsorBlock segments in YouTube videos
+ * Copyright © 2026 Jaival
+ */
+
+package io.github.ezn24.sponsorskip.bilibili
 
 import android.app.Activity
 import android.content.Intent
