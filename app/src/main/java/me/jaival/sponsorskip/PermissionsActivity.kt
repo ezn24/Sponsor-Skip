@@ -29,10 +29,10 @@ class PermissionsActivity : AppCompatActivity() {
         val permHelp = findViewById<TextView>(R.id.permHelp)
 
         val hasListener = NotificationManagerCompat.getEnabledListenerPackages(this).contains(packageName)
-        permNotif.text = "Notification Listener  " + (if (hasListener) "✅" else "❌")
+        permNotif.text = getString(R.string.notification_listener_status, if (hasListener) "✅" else "❌")
         permNotif.setOnClickListener {
             if (hasListener) {
-                Toast.makeText(this, "Notification listener permission already granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.notification_listener_granted, Toast.LENGTH_SHORT).show()
             } else {
                 startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
             }
@@ -42,10 +42,10 @@ class PermissionsActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             hasToasts = checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
         }
-        permToast.text = "Post Notifications  " + (if (hasToasts) "✅" else "❌")
+        permToast.text = getString(R.string.post_notifications_status, if (hasToasts) "✅" else "❌")
         permToast.setOnClickListener {
             if (hasToasts) {
-                Toast.makeText(this, "Post notification permission already granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.post_notifications_granted, Toast.LENGTH_SHORT).show()
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 101)
             }
@@ -53,30 +53,30 @@ class PermissionsActivity : AppCompatActivity() {
 
         val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
         val isIgnoringBattery = pm.isIgnoringBatteryOptimizations(packageName)
-        permBattery.text = "Battery Optimization\n(It may fix detection issues, if faced)  \n" + (if (isIgnoringBattery) "✅ (Unrestricted)" else "⚠️ (Optimized)")
+        permBattery.text = getString(R.string.battery_status, getString(if (isIgnoringBattery) R.string.unrestricted else R.string.optimized))
 
         permBattery.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Battery Optimization")
-                .setMessage("If you are having issues with the app randomly stopping in the background, try disabling battery optimization to allow the service to run uninterrupted.\n\nIt is recommended to force stop the app, and reopen to ensure stability")
-                .setPositiveButton("Disable") { _, _ ->
+                .setTitle(R.string.battery_optimization)
+                .setMessage(R.string.battery_optimization_message)
+                .setPositiveButton(R.string.disable) { _, _ ->
                     if (isIgnoringBattery) {
-                        Toast.makeText(this, "Battery optimization is already disabled", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, R.string.battery_already_disabled, Toast.LENGTH_SHORT).show()
                     } else {
                         val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
                         intent.data = Uri.parse("package:$packageName")
                         startActivity(intent)
                     }
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(R.string.cancel, null)
                 .show()
         }
 
         permHelp.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Read Carefully")
-                .setMessage("Please do the following to bypass restricted permission issue:\n\nClick on app info > click on ⋮ at the top > \"Allow restricted permission\". Then comeback to Sponsor Skip.")
-                .setPositiveButton("App Info") { _, _ ->
+                .setTitle(R.string.read_carefully)
+                .setMessage(R.string.restricted_permission_help)
+                .setPositiveButton(R.string.app_info) { _, _ ->
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     intent.data = Uri.parse("package:$packageName")
                     startActivity(intent)

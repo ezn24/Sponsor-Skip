@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="?attr/colorSurface">
-    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="Permissions" app:navigationIcon="?attr/homeAsUpIndicator" app:navigationContentDescription="Navigate up"/>
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="@string/permissions" app:navigationIcon="?attr/homeAsUpIndicator" app:navigationContentDescription="@string/navigate_up"/>
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
         <TextView android:id="@+id/permNotif" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:textSize="16sp" android:background="?attr/selectableItemBackground"/>
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorSurfaceVariant"/>
@@ -8,6 +8,6 @@
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorSurfaceVariant"/>
         <TextView android:id="@+id/permBattery" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:textSize="16sp" android:background="?attr/selectableItemBackground"/>
         <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorSurfaceVariant"/>
-        <TextView android:id="@+id/permHelp" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:textSize="14sp" android:textColor="?attr/colorPrimary" android:text="Facing problems in granting permission?" android:background="?attr/selectableItemBackground"/>
+        <TextView android:id="@+id/permHelp" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:textSize="14sp" android:textColor="?attr/colorPrimary" android:text="@string/permission_help" android:background="?attr/selectableItemBackground"/>
     </LinearLayout>
 </LinearLayout>

@@ -40,16 +40,16 @@ import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
   private val categories = listOf(
-    Triple("sponsor", "Sponsor", "Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like"),
-    Triple("selfpromo", "Unpaid / Self Promotion", "Similar to Sponsor except for unpaid / self promotion. Includes sections about merchandise, donations, or information about who they collaborated with"),
-    Triple("interaction", "Interaction Reminder", "A short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should instead be under self promotion"),
-    Triple("intro", "Intermission / Intro Animation", "An interval without actual content. Could be a pause, static frame, or repeating animation. Does not include transitions containing information"),
-    Triple("outro", "Endcards / Credits", "Credits or when the YouTube endcards appear. Not for conclusions with information"),
-    Triple("preview", "Preview / Recap", "Collection of clips that show what is coming up or what happened in the video or in other videos of a series, where all information is repeated elsewhere"),
-    Triple("exclusive_access", "Exclusive Access", "Content that is only available through early or exclusive access"),
-    Triple("padding", "Padding / Filler", "Scenes added only to pad the video length without adding useful content"),
-    Triple("filler", "Tangent / Jokes", "Tangential scenes or jokes that are not required to understand the main content of the video. Does not include sections providing context or background details"),
-    Triple("music_offtopic", "Music: Non-Music Section", "Only for use in music videos. Sections of music videos without music that are not already covered by another category")
+    Triple("sponsor", R.string.category_sponsor, R.string.category_sponsor_description),
+    Triple("selfpromo", R.string.category_selfpromo, R.string.category_selfpromo_description),
+    Triple("interaction", R.string.category_interaction, R.string.category_interaction_description),
+    Triple("intro", R.string.category_intro, R.string.category_intro_description),
+    Triple("outro", R.string.category_outro, R.string.category_outro_description),
+    Triple("preview", R.string.category_preview, R.string.category_preview_description),
+    Triple("exclusive_access", R.string.category_exclusive_access, R.string.category_exclusive_access_description),
+    Triple("padding", R.string.category_padding, R.string.category_padding_description),
+    Triple("filler", R.string.category_filler, R.string.category_filler_description),
+    Triple("music_offtopic", R.string.category_music_offtopic, R.string.category_music_offtopic_description)
   )
 
   private val statsReceiver = object : BroadcastReceiver() {
@@ -115,14 +115,14 @@ class MainActivity : AppCompatActivity() {
       if (SettingsManager.skippedCount == 0) return@setOnClickListener
       view.haptic()
       AlertDialog.Builder(this@MainActivity)
-        .setTitle("Reset Statistics")
-        .setMessage("Are you sure you want to reset your saved segments and time?")
-        .setPositiveButton("Reset") { _, _ ->
+        .setTitle(R.string.reset_statistics)
+        .setMessage(R.string.reset_statistics_message)
+        .setPositiveButton(R.string.reset) { _, _ ->
           SettingsManager.skippedCount = 0
           SettingsManager.timeSavedMs = 0L
           refreshStats()
         }
-        .setNegativeButton("Cancel", null)
+        .setNegativeButton(R.string.cancel, null)
         .show()
     }
     setupFooter()
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
       if (isChecked && !hasNotif) {
         view.haptic()
         switchMaster.isChecked = false 
-        Toast.makeText(this@MainActivity, "Permission required to start service.", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@MainActivity, R.string.permission_required, Toast.LENGTH_LONG).show()
         startActivity(Intent(this@MainActivity, PermissionsActivity::class.java))
         return@setOnCheckedChangeListener
       }
@@ -153,10 +153,13 @@ class MainActivity : AppCompatActivity() {
 
     // Beta Tag and Icon styling for Custom Apps Button
     val btnCustomApps = findViewById<TextView>(R.id.btnSetBackup)
-    val span = SpannableString("Custom Apps  beta ")
-    span.setSpan(BackgroundColorSpan(Color.parseColor("#44888888")), 13, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-    span.setSpan(TypefaceSpan("monospace"), 13, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-    span.setSpan(RelativeSizeSpan(0.75f), 13, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    val customAppsText = getString(R.string.custom_apps_beta)
+    val span = SpannableString(customAppsText)
+    val badgeStart = (getString(R.string.custom_apps).length + 2).coerceAtMost(customAppsText.length)
+    val badgeEnd = customAppsText.trimEnd().length.coerceAtLeast(badgeStart)
+    span.setSpan(BackgroundColorSpan(Color.parseColor("#44888888")), badgeStart, badgeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    span.setSpan(TypefaceSpan("monospace"), badgeStart, badgeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    span.setSpan(RelativeSizeSpan(0.75f), badgeStart, badgeEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     btnCustomApps.text = span
     
     
@@ -164,7 +167,7 @@ class MainActivity : AppCompatActivity() {
     
     try {
         val pInfo = packageManager.getPackageInfo(packageName, 0)
-        findViewById<TextView>(R.id.tvVersion).text = "Version ${pInfo.versionName} (Tap to check)"
+        findViewById<TextView>(R.id.tvVersion).text = getString(R.string.version_format, pInfo.versionName)
     } catch (e: Exception) { }
     
     findViewById<View>(R.id.cardUpdate).setOnClickListener { it.haptic(); lifecycleScope.launch { UpdateManager.checkUpdate(this@MainActivity, true) } }
@@ -174,9 +177,9 @@ class MainActivity : AppCompatActivity() {
     findViewById<View>(R.id.btnSetRepo).setOnClickListener { it.haptic(); startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11/Sponsor-Skip"))) }
     findViewById<View>(R.id.btnSetBugs).setOnClickListener { it.haptic(); startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11/Sponsor-Skip#bug-reports--feature-suggestions"))) }
     findViewById<View>(R.id.btnSetFeature).setOnClickListener { it.haptic(); startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11/Sponsor-Skip#bug-reports--feature-suggestions"))) }
-    findViewById<View>(R.id.btnSetContact).setOnClickListener { it.haptic(); val version = try { packageManager.getPackageInfo(packageName, 0).versionName } catch (e: Exception) { "Unknown" }; val intent = Intent(Intent.ACTION_SENDTO).apply { data = Uri.parse("mailto:jaival7909@gmail.com?subject=" + Uri.encode("Sponsor Skip - v$version")) }; startActivity(Intent.createChooser(intent, "Send Email")) }
+    findViewById<View>(R.id.btnSetContact).setOnClickListener { it.haptic(); val version = try { packageManager.getPackageInfo(packageName, 0).versionName } catch (e: Exception) { getString(R.string.unknown) }; val intent = Intent(Intent.ACTION_SENDTO).apply { data = Uri.parse("mailto:jaival7909@gmail.com?subject=" + Uri.encode("Sponsor Skip - v$version")) }; startActivity(Intent.createChooser(intent, getString(R.string.send_email))) }
     findViewById<View>(R.id.btnSetPrivacy).setOnClickListener { it.haptic(); startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11/Sponsor-Skip/blob/main/PRIVACY.md"))) }
-    findViewById<View>(R.id.btnSetLicense).setOnClickListener { it.haptic(); AlertDialog.Builder(this).setTitle("License & Warranty").setMessage("Sponsor Skip: Auto-skips SponsorBlock segments in YouTube videos\nCopyright © 2026 Jaival\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.").setPositiveButton("View Full GPLv3") { _, _ -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.gnu.org/licenses/gpl-3.0.html"))) }.setNegativeButton("Close", null).show() }
+    findViewById<View>(R.id.btnSetLicense).setOnClickListener { it.haptic(); AlertDialog.Builder(this).setTitle(R.string.license_title).setMessage(R.string.license_message).setPositiveButton(R.string.view_full_gpl) { _, _ -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.gnu.org/licenses/gpl-3.0.html"))) }.setNegativeButton(R.string.close, null).show() }
     findViewById<View>(R.id.btnSetCredits).setOnClickListener { view ->
       view.performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY)
       
@@ -206,10 +209,10 @@ class MainActivity : AppCompatActivity() {
                       try {
                           v.context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url)))
                       } catch (e: Exception) {
-                          android.widget.Toast.makeText(v.context, "Failed to open link", android.widget.Toast.LENGTH_SHORT).show()
+                          android.widget.Toast.makeText(v.context, R.string.failed_open_link, android.widget.Toast.LENGTH_SHORT).show()
                       }
                   } else {
-                      android.widget.Toast.makeText(v.context, "No license URL provided by library", android.widget.Toast.LENGTH_SHORT).show()
+                      android.widget.Toast.makeText(v.context, R.string.no_license_url, android.widget.Toast.LENGTH_SHORT).show()
                   }
                   
                   // Returning TRUE consumes the click, completely blocking the release page from opening
@@ -273,8 +276,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun showPrivacyDialog() {
     if (privacyDialog?.isShowing == true) return
-    val message = "To keep things transparent and respect your privacy, here is exactly how the app works under the hood:\n\n1. Finding the Video: The app requires 'Notification Access' to read the title, duration and playback position from bilibili's active media player. The app DOES NOT read your personal messages.\n\n2. Getting the Video ID: Because bilibili's media session does not expose the BVID, the app searches bilibili's public API using the title and verifies the result using the video duration. No account data, login or cookies are sent.\n\n3. Skipping the segments: The BVID and CID are sent to the community-run BilibiliSponsorBlock API (bsbsb.top) to get skip timestamps.\n\n4. Local processing: The actual skipping happens entirely on your phone. The app never collects, stores, shares or sells your viewing history.\n\nYou can know more from our Privacy Policy\n\nBy tapping 'Accept', you consent to our Privacy Policy."
-    privacyDialog = AlertDialog.Builder(this).setTitle("Welcome to Sponsor Skip!").setMessage(message).setCancelable(false).setPositiveButton("Accept") { _, _ -> SettingsManager.isPrivacyAccepted = true; lifecycleScope.launch { UpdateManager.checkUpdate(this@MainActivity, false) } }.setNegativeButton("Decline") { _, _ -> finishAffinity() }.setNeutralButton("Privacy Policy", null).create()
+    privacyDialog = AlertDialog.Builder(this).setTitle(R.string.welcome_title).setMessage(R.string.privacy_message).setCancelable(false).setPositiveButton(R.string.accept) { _, _ -> SettingsManager.isPrivacyAccepted = true; lifecycleScope.launch { UpdateManager.checkUpdate(this@MainActivity, false) } }.setNegativeButton(R.string.decline) { _, _ -> finishAffinity() }.setNeutralButton(R.string.privacy_policy, null).create()
     privacyDialog?.setOnShowListener {
       privacyDialog?.getButton(AlertDialog.BUTTON_NEUTRAL)?.setOnClickListener { view ->
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
@@ -320,8 +322,8 @@ class MainActivity : AppCompatActivity() {
     val container = findViewById<LinearLayout>(R.id.segmentsContainer)
     categories.forEach { info ->
       val key = info.first
-      val label = info.second
-      val desc = info.third
+      val label = getString(info.second)
+      val desc = getString(info.third)
 
       val card = MaterialCardView(this).apply {
         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { setMargins(0, 0, 0, 24) }
@@ -379,8 +381,10 @@ class MainActivity : AppCompatActivity() {
         orientation = RadioGroup.HORIZONTAL
         val offId = View.generateViewId()
         val skipId = View.generateViewId()
-        addView(RadioButton(context).apply { id = offId; text = "Off"; contentDescription = "$label Off"; minHeight = (48 * resources.displayMetrics.density).toInt() })
-        addView(RadioButton(context).apply { id = skipId; text = "Skip automatically"; contentDescription = "$label Skip automatically"; minHeight = (48 * resources.displayMetrics.density).toInt() })
+        val offLabel = getString(R.string.off)
+        val skipLabel = getString(R.string.skip_automatically)
+        addView(RadioButton(context).apply { id = offId; text = offLabel; contentDescription = getString(R.string.content_description_action, label, offLabel); minHeight = (48 * resources.displayMetrics.density).toInt() })
+        addView(RadioButton(context).apply { id = skipId; text = skipLabel; contentDescription = getString(R.string.content_description_action, label, skipLabel); minHeight = (48 * resources.displayMetrics.density).toInt() })
         check(if (SettingsManager.getSegmentAction(key) == 1) skipId else offId)
         setOnCheckedChangeListener { view, checkedId ->
           if (checkedId != -1) {
@@ -404,13 +408,13 @@ class MainActivity : AppCompatActivity() {
     val s = (ms / 1000) % 60
     val m = (ms / (1000 * 60)) % 60
     val h = (ms / (1000 * 60 * 60))
-    val timeStr = if (h > 0) "${h}h ${m}m ${s}s" else "${m}m ${s}s"
-    findViewById<TextView>(R.id.tvStats).text = "${SettingsManager.skippedCount} Segments | $timeStr"
+    val timeStr = if (h > 0) "${h}h " + getString(R.string.duration_format, m, s) else getString(R.string.duration_format, m, s)
+    findViewById<TextView>(R.id.tvStats).text = getString(R.string.stats_format, SettingsManager.skippedCount, timeStr)
   }
 
   private fun setupFooter() {
     val tvTagline = findViewById<TextView>(R.id.tvTagline)
-    val taglineText = "SponsorBlock for native android"
+    val taglineText = getString(R.string.tagline)
     val spannableTagline = SpannableString(taglineText)
     val clickableSponsorBlock = object : ClickableSpan() {
       override fun onClick(widget: View) {
@@ -418,12 +422,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ajayyy/SponsorBlock")))
       }
     }
-    spannableTagline.setSpan(clickableSponsorBlock, 0, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    val sponsorBlockStart = taglineText.indexOf("SponsorBlock").coerceAtLeast(0)
+    spannableTagline.setSpan(clickableSponsorBlock, sponsorBlockStart, sponsorBlockStart + 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     tvTagline.text = spannableTagline
     tvTagline.movementMethod = LinkMovementMethod.getInstance()
     
     val footer = findViewById<TextView>(R.id.tvFooter)
-    val text = "Made with ❤️ by Jaival"
+    val text = getString(R.string.made_with_love)
     val spannable = SpannableString(text)
     val clickableSpan = object : ClickableSpan() {
       override fun onClick(widget: View) {
@@ -447,7 +452,7 @@ class MainActivity : AppCompatActivity() {
   private fun showCustomAppsDialog() {
       val progressDialog = AlertDialog.Builder(this)
           .setView(ProgressBar(this).apply { setPadding(50, 50, 50, 50) })
-          .setMessage("Loading installed apps...")
+          .setMessage(R.string.loading_installed_apps)
           .setCancelable(false)
           .show()
 
@@ -540,15 +545,15 @@ class MainActivity : AppCompatActivity() {
               })
               
               AlertDialog.Builder(this@MainActivity)
-                  .setTitle("Select Custom Apps")
+                  .setTitle(R.string.select_custom_apps)
                   .setView(container)
-                  .setPositiveButton("Save") { _, _ ->
+                  .setPositiveButton(R.string.save) { _, _ ->
                       SettingsManager.targetPackages = selectedPackages
                       AppLogger.log("[SETTINGS] Saved target packages. Total selected: ${selectedPackages.size}")
                       sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
-                      Toast.makeText(this@MainActivity, "Target apps updated", Toast.LENGTH_SHORT).show()
+                      Toast.makeText(this@MainActivity, R.string.target_apps_updated, Toast.LENGTH_SHORT).show()
                   }
-                  .setNegativeButton("Cancel", null)
+                  .setNegativeButton(R.string.cancel, null)
                   .show()
           }
       }

@@ -16,7 +16,7 @@ object AppSelectionDialog {
         val scope = CoroutineScope(Dispatchers.Main + Job())
         val progress = AlertDialog.Builder(activity)
             .setView(ProgressBar(activity).apply { setPadding(50, 50, 50, 50) })
-            .setMessage("Loading installed apps...")
+            .setMessage(R.string.loading_installed_apps)
             .setCancelable(false)
             .show()
 
@@ -74,14 +74,14 @@ object AppSelectionDialog {
                             // Reverse Guard: If user adds Spotify to the main app list while Spot is active
                             if (isChecked && targetPkg == SettingsManager.SPOTIFY_PACKAGE && SettingsManager.isSpotEnabled) {
                                 AlertDialog.Builder(activity)
-                                    .setTitle("App Conflict")
-                                    .setMessage("Spotify is currently active in Spot SponsorBlock.\n\nIf you add it to the main app list, Spot SponsorBlock will be turned off.")
-                                    .setPositiveButton("Continue") { _, _ ->
+                                    .setTitle(R.string.app_conflict)
+                                    .setMessage(R.string.spotify_main_conflict)
+                                    .setPositiveButton(R.string.continue_label) { _, _ ->
                                         SettingsManager.isSpotEnabled = false
                                         applyCheck(true)
-                                        Toast.makeText(activity, "Disabled Spot SponsorBlock", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(activity, R.string.disabled_spot, Toast.LENGTH_SHORT).show()
                                     }
-                                    .setNegativeButton("Cancel") { _, _ -> cb.isChecked = false }
+                                    .setNegativeButton(R.string.cancel) { _, _ -> cb.isChecked = false }
                                     .show()
                             } else { applyCheck(isChecked) }
                         }
@@ -101,15 +101,15 @@ object AppSelectionDialog {
                 })
 
                 AlertDialog.Builder(activity)
-                    .setTitle("Select Apps")
+                    .setTitle(R.string.select_apps)
                     .setView(container)
-                    .setPositiveButton("Save") { _, _ ->
+                    .setPositiveButton(R.string.save) { _, _ ->
                         SettingsManager.targetPackages = currentActiveSet
                         AppLogger.log("[SETTINGS] Saved target packages. Count: ${currentActiveSet.size}")
-                        Toast.makeText(activity, "App list saved", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, R.string.app_list_saved, Toast.LENGTH_SHORT).show()
                         activity.sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(activity.packageName))
                     }
-                    .setNegativeButton("Cancel", null)
+                    .setNegativeButton(R.string.cancel, null)
                     .show()
             }
         }

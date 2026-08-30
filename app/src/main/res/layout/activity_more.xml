@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="?attr/colorSurface">
-    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="More" app:navigationIcon="?attr/homeAsUpIndicator" app:navigationContentDescription="Navigate up"/>
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="@string/more" app:navigationIcon="?attr/homeAsUpIndicator" app:navigationContentDescription="@string/navigate_up"/>
     <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
             
@@ -35,7 +35,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Updates"
+                            android:text="@string/updates"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:textColor="?attr/colorOnSurface" />
@@ -76,13 +76,13 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Check for updates"
+                                    android:text="@string/check_updates"
                                     android:textSize="16sp"
                                     android:textColor="?attr/colorOnSurface" />
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Auto check for app updates. It is recommended to keep it on"
+                                    android:text="@string/check_updates_description"
                                     android:textSize="14sp"
                                     android:textColor="?attr/colorOnSurfaceVariant"
                                     android:layout_marginTop="4dp" />
@@ -113,13 +113,13 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Pre-release updates"
+                                    android:text="@string/prerelease_updates"
                                     android:textSize="16sp"
                                     android:textColor="?attr/colorOnSurface" />
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Receive pre-release version updates. There may be bugs and not stable."
+                                    android:text="@string/prerelease_updates_description"
                                     android:textSize="14sp"
                                     android:textColor="?attr/colorOnSurfaceVariant"
                                     android:layout_marginTop="4dp" />
@@ -161,7 +161,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Strict search"
+                            android:text="@string/strict_search"
                             android:textSize="16sp"
                             android:textColor="?attr/colorOnSurface" />
                         <TextView
@@ -176,7 +176,7 @@
                         android:id="@+id/descStrictSearch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Use strict search to ensure more accurate results. It may break for videos with certain titles"
+                        android:text="@string/strict_search_description"
                         android:textSize="14sp"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginTop="4dp"
@@ -215,7 +215,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Spot SponsorBlock"
+                            android:text="@string/spot_sponsorblock"
                             android:textSize="16sp"
                             android:textColor="?attr/colorOnSurface" />
                         <TextView
@@ -230,7 +230,7 @@
                         android:id="@+id/descSpot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SponsorBlock for Spotify"
+                        android:text="@string/spot_sponsorblock_description"
                         android:textSize="14sp"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginTop="4dp"
@@ -269,7 +269,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Foreground service"
+                            android:text="@string/foreground_service"
                             android:textSize="16sp"
                             android:textColor="?attr/colorOnSurface" />
                         <TextView
@@ -284,7 +284,7 @@
                         android:id="@+id/descForeground"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Run a foreground service if you are currently facing problems (may consume more battery)"
+                        android:text="@string/foreground_service_description"
                         android:textSize="14sp"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginTop="4dp"
@@ -323,7 +323,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Enable Skip Count tracking"
+                            android:text="@string/skip_count_tracking"
                             android:textSize="16sp"
                             android:textColor="?attr/colorOnSurface" />
                         <TextView
@@ -338,7 +338,7 @@
                         android:id="@+id/descSkipCountTracking"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sends skip counts to contribute to the SponsorBlock leaderboard to track how much time is saved. Only segment UUID is sent, no personal information like account info, etc is sent."
+                        android:text="@string/skip_count_tracking_description"
                         android:textSize="14sp"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:layout_marginTop="4dp"
@@ -352,10 +352,10 @@
 
             <View android:layout_width="match_parent" android:layout_height="1dp" android:background="?attr/colorSurfaceVariant"/>
 
-            <TextView android:id="@+id/btnSetMinDuration" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Minimum segment duration" android:drawableStart="@drawable/ic_schedule" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
-            <TextView android:id="@+id/btnSetSkipOffset" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Skip offset" android:drawableStart="@drawable/ic_linear_scale" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
-            <TextView android:id="@+id/btnBackupRestore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Backup &amp; Restore" android:drawableStart="@drawable/ic_backup" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
-            <TextView android:id="@+id/btnSetDebug" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Debug Logs" android:drawableStart="@drawable/ic_terminal" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
+            <TextView android:id="@+id/btnSetMinDuration" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/minimum_segment_duration" android:drawableStart="@drawable/ic_schedule" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
+            <TextView android:id="@+id/btnSetSkipOffset" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/skip_offset" android:drawableStart="@drawable/ic_linear_scale" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
+            <TextView android:id="@+id/btnBackupRestore" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/backup_restore" android:drawableStart="@drawable/ic_backup" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
+            <TextView android:id="@+id/btnSetDebug" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/debug_logs" android:drawableStart="@drawable/ic_terminal" android:drawablePadding="16dp" android:padding="16dp" android:background="?attr/selectableItemBackground" android:textSize="16sp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

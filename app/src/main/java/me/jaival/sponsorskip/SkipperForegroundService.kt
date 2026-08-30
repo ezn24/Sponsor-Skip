@@ -36,8 +36,8 @@ class SkipperForegroundService : Service() {
         try {
             val channelId = "foreground_keepalive"
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channel = NotificationChannel(channelId, "Foreground Service", NotificationManager.IMPORTANCE_LOW)
-                channel.description = "Unnecessary notification"
+                val channel = NotificationChannel(channelId, getString(R.string.foreground_channel), NotificationManager.IMPORTANCE_LOW)
+                channel.description = getString(R.string.foreground_channel_description)
                 getSystemService(NotificationManager::class.java)?.createNotificationChannel(channel)
             }
 
@@ -53,8 +53,8 @@ class SkipperForegroundService : Service() {
             )
 
             val notification = NotificationCompat.Builder(this, channelId)
-                .setContentTitle("Sponsor Skip Bilibili")
-                .setContentText("Click here to disable this notification")
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.foreground_notification_text))
                 .setSmallIcon(android.R.drawable.stat_sys_download)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .setContentIntent(pendingIntent) // Bind the click action

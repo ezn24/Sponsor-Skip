@@ -37,10 +37,10 @@ class MoreActivity : AppCompatActivity() {
                     outputStream.write(jsonStr.toByteArray(Charsets.UTF_8))
                 }
                 AppLogger.log("[BACKUP] Backup successfully created at $uri")
-                Toast.makeText(this, "Backup created successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.backup_created, Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 AppLogger.log("[BACKUP] Export failed: ${e.message}")
-                Toast.makeText(this, "Failed to create backup: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.backup_failed, e.message), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -53,16 +53,16 @@ class MoreActivity : AppCompatActivity() {
                 }
                 if (!jsonStr.isNullOrEmpty() && SettingsManager.importSettingsJson(jsonStr)) {
                     AppLogger.log("[BACKUP] Backup successfully restored from $uri")
-                    Toast.makeText(this, "Backup restored successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.restore_successful, Toast.LENGTH_SHORT).show()
                     updateUiState()
                     showRestartDialog()
                 } else {
                     AppLogger.log("[BACKUP] Failed to restore: Invalid backup file")
-                    Toast.makeText(this, "Invalid backup file", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.invalid_backup, Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 AppLogger.log("[BACKUP] Import failed: ${e.message}")
-                Toast.makeText(this, "Failed to restore backup: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.restore_failed, e.message), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -70,10 +70,10 @@ class MoreActivity : AppCompatActivity() {
     private fun showRestartDialog() {
         AppLogger.log("[BACKUP] Prompting user to restart app after successful restoration")
         AlertDialog.Builder(this)
-            .setTitle("Restart Required")
-            .setMessage("Settings and statistics have been restored. Please restart the app to apply all changes.")
+            .setTitle(R.string.restart_required)
+            .setMessage(R.string.restart_required_message)
             .setCancelable(false)
-            .setPositiveButton("Restart") { _, _ ->
+            .setPositiveButton(R.string.restart) { _, _ ->
                 AppLogger.log("[BACKUP] User confirmed restart, restarting application")
                 val intent = packageManager.getLaunchIntentForPackage(packageName)
                 if (intent != null) {
@@ -147,18 +147,18 @@ class MoreActivity : AppCompatActivity() {
 
             if (isChecked && SettingsManager.targetPackages.contains(SettingsManager.SPOTIFY_PACKAGE)) {
                 AlertDialog.Builder(this)
-                    .setTitle("App Conflict")
-                    .setMessage("Spotify is currently selected in Main YouTube SponsorBlock.\n\nIf you continue, it will be removed from there and Spot SponsorBlock will be enabled.")
-                    .setPositiveButton("Continue") { _, _ ->
+                    .setTitle(R.string.app_conflict)
+                    .setMessage(R.string.spotify_spot_conflict)
+                    .setPositiveButton(R.string.continue_label) { _, _ ->
                         val updated = SettingsManager.targetPackages.toMutableSet()
                         updated.remove(SettingsManager.SPOTIFY_PACKAGE)
                         SettingsManager.targetPackages = updated
 
                         SettingsManager.isSpotEnabled = true
                         sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
-                        Toast.makeText(this, "Enabled Spot SponsorBlock", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, R.string.enabled_spot, Toast.LENGTH_SHORT).show()
                     }
-                    .setNegativeButton("Cancel") { _, _ -> switchSpot.isChecked = false }
+                    .setNegativeButton(R.string.cancel) { _, _ -> switchSpot.isChecked = false }
                     .show()
             } else {
                 SettingsManager.isSpotEnabled = isChecked
@@ -201,16 +201,16 @@ class MoreActivity : AppCompatActivity() {
                 setPadding(48, 32, 48, 32)
             }
             AlertDialog.Builder(this)
-                .setTitle("Minimum Segment Duration")
-                .setMessage("Enter min. duration for a segment to skip. Segments shorter than it will be not skipped (in seconds).")
+                .setTitle(R.string.minimum_duration_title)
+                .setMessage(R.string.minimum_duration_message)
                 .setView(input)
-                .setPositiveButton("Save") { _, _ ->
+                .setPositiveButton(R.string.save) { _, _ ->
                     val valStr = input.text.toString()
                     val value = valStr.toFloatOrNull() ?: 0f
                     SettingsManager.minSegmentDuration = value
-                    Toast.makeText(this, "Minimum duration set to $value seconds", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.minimum_duration_set, value.toString()), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(R.string.cancel, null)
                 .show()
         }
 
@@ -268,25 +268,25 @@ class MoreActivity : AppCompatActivity() {
             })
 
             AlertDialog.Builder(this)
-                .setTitle("Skip Offset")
-                .setMessage("Enter skip offset in milliseconds (ms):\n\n• Negative (-): skip segment this much ms before it starts\n• Positive (+): skip segment this much ms after it starts")
+                .setTitle(R.string.skip_offset_title)
+                .setMessage(R.string.skip_offset_message)
                 .setView(dialogView)
-                .setPositiveButton("Save") { _, _ ->
+                .setPositiveButton(R.string.save) { _, _ ->
                     val valStr = input.text.toString()
                     val value = valStr.toFloatOrNull() ?: 0f
                     SettingsManager.skipOffset = value
                     AppLogger.log("[UI] Skip offset set to ${value.toInt()} ms")
-                    Toast.makeText(this, "Skip offset set to ${value.toInt()} ms", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.skip_offset_set, value.toInt()), Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(R.string.cancel, null)
                 .show()
         }
 
         findViewById<View>(R.id.btnBackupRestore).setOnClickListener {
             it.haptic()
-            val options = arrayOf("Backup Settings and Stastics", "Restore Settings and Stastics")
+            val options = arrayOf(getString(R.string.backup_settings_stats), getString(R.string.restore_settings_stats))
             AlertDialog.Builder(this)
-                .setTitle("Backup & Restore")
+                .setTitle(R.string.backup_restore)
                 .setItems(options) { _, which ->
                     when (which) {
                         0 -> exportBackupLauncher.launch("sponsorskip_backup.json")

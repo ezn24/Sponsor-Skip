@@ -69,19 +69,19 @@ class DebugActivity : AppCompatActivity() {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("SponsorSkip Logs", finalLogs)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(this, if (switchRedact.isChecked) "Redacted logs copied! Always check logs before sharing." else "Raw logs copied! Always check logs before sharing.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, if (switchRedact.isChecked) R.string.redacted_logs_copied else R.string.raw_logs_copied, Toast.LENGTH_LONG).show()
         }
 
         btnClear.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Clear Logs")
-                .setMessage("Are you sure you want to permanently delete all logs?")
-                .setPositiveButton("Clear") { _, _ ->
+                .setTitle(R.string.clear_logs)
+                .setMessage(R.string.clear_logs_message)
+                .setPositiveButton(R.string.clear) { _, _ ->
                     AppLogger.clearLogs()
                     refreshLogs(tvLogs)
-                    Toast.makeText(this, "Logs cleared", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.logs_cleared, Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(R.string.cancel, null)
                 .show()
         }
 
@@ -94,10 +94,10 @@ class DebugActivity : AppCompatActivity() {
             if (logFile.exists()) {
                 textView.text = logFile.readLines().reversed().joinToString("\n")
             } else {
-                textView.text = "Log file is empty."
+                textView.text = getString(R.string.log_empty)
             }
         } catch (e: Exception) {
-            textView.text = "Error reading logs: ${e.message}"
+            textView.text = getString(R.string.log_read_error, e.message)
         }
     }
 }

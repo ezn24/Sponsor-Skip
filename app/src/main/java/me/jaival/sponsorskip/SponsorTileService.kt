@@ -26,7 +26,7 @@ class SponsorTileService : TileService() {
         mainHandler.post {
             Toast.makeText(
                 applicationContext,
-                if (nextState) "Sponsor Skip: ON" else "Sponsor Skip: OFF",
+                if (nextState) R.string.service_on else R.string.service_off,
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -39,10 +39,10 @@ class SponsorTileService : TileService() {
         val isEnabled = SettingsManager.isServiceEnabled
 
         tile.state = if (isEnabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.label = "Sponsor Skip Bilibili"
+        tile.label = getString(R.string.app_name)
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            tile.subtitle = if (isEnabled) "On" else "Off"
+            tile.subtitle = getString(if (isEnabled) R.string.on else R.string.off)
         }
         tile.updateTile()
     }

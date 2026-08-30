@@ -14,7 +14,7 @@ class ShortcutToggleActivity : Activity() {
         SettingsManager.isServiceEnabled = nextState
         sendBroadcast(Intent(SettingsManager.ACTION_TOGGLE_SERVICE).setPackage(packageName))
 
-        Toast.makeText(this, if (nextState) "Sponsor Skip: ON" else "Sponsor Skip: OFF", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, if (nextState) R.string.service_on else R.string.service_off, Toast.LENGTH_SHORT).show()
         finish()
     }
 }

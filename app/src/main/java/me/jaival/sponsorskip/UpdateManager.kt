@@ -112,7 +112,7 @@ object UpdateManager {
 
             if (!res.isSuccessful) {
                 AppLogger.log("[UPDATER] HTTP check failed: ${res.code}")
-                if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, "Repo not found or no releases yet.", Toast.LENGTH_SHORT).show() }
+                if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, R.string.repo_no_releases, Toast.LENGTH_SHORT).show() }
                 return
             }
 
@@ -160,14 +160,14 @@ object UpdateManager {
                     withContext(Dispatchers.Main) { showUpdateDialog(context, latestTag, latestUrl, currentVersion) }
                 } else {
                     AppLogger.log("[UPDATER] ABORT: Newer release found, but it has no APK file attached.")
-                    if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, "Release found but no APK attached.", Toast.LENGTH_SHORT).show() }
+                    if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, R.string.release_no_apk, Toast.LENGTH_SHORT).show() }
                 }
             } else {
-                if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, "You are on the latest version!", Toast.LENGTH_SHORT).show() }
+                if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, R.string.latest_version, Toast.LENGTH_SHORT).show() }
             }
         } catch (e: Exception) {
             AppLogger.log("[UPDATER] FATAL ERROR: ${e.message}")
-            if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, "Error checking update.", Toast.LENGTH_SHORT).show() }
+            if (manual) withContext(Dispatchers.Main) { Toast.makeText(context, R.string.update_check_error, Toast.LENGTH_SHORT).show() }
         }
     }
 
@@ -245,7 +245,7 @@ object UpdateManager {
         val notifId = 1002
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, "App Updates", NotificationManager.IMPORTANCE_DEFAULT)
+            val channel = NotificationChannel(channelId, context.getString(R.string.update_channel), NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
 
@@ -263,10 +263,10 @@ object UpdateManager {
             android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE
         )
 
-        val notificationText = "Update to version $tag is available, update now"
+        val notificationText = context.getString(R.string.update_notification_text, tag)
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("Update available")
+            .setContentTitle(context.getString(R.string.update_available))
             .setContentText(notificationText)
             .setStyle(NotificationCompat.BigTextStyle().bigText(notificationText))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -283,16 +283,16 @@ object UpdateManager {
 
     fun showUpdateDialog(context: Context, tag: String, apkUrl: String, currentVersion: String) {
         val dialog = AlertDialog.Builder(context)
-            .setTitle("New version available")
-            .setMessage("Current app version is v$currentVersion. An update to v$tag is available. Open changelog to see changes")
+            .setTitle(R.string.new_version_available)
+            .setMessage(context.getString(R.string.update_available_message, currentVersion, tag))
             .setCancelable(false)
-            .setPositiveButton("Download") { _, _ ->
+            .setPositiveButton(R.string.download) { _, _ ->
                 SettingsManager.pendingUpdateTag = ""
                 SettingsManager.pendingUpdateUrl = ""
-                Toast.makeText(context, "Downloading v$tag, check notification for progress", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context.getString(R.string.downloading_update, tag), Toast.LENGTH_LONG).show()
                 CoroutineScope(Dispatchers.IO).launch { downloadAndInstall(context, apkUrl, tag) }
             }
-            .setNegativeButton("Later") { _, _ ->
+            .setNegativeButton(R.string.later_button) { _, _ ->
                 SettingsManager.pendingUpdateTag = ""
                 SettingsManager.pendingUpdateUrl = ""
                 CoroutineScope(Dispatchers.IO).launch {
@@ -303,7 +303,7 @@ object UpdateManager {
                     } catch (e: Exception) {}
                 }
             }
-            .setNeutralButton("Changelog", null)
+            .setNeutralButton(R.string.changelog, null)
             .create()
 
         dialog.setOnShowListener {
@@ -321,12 +321,12 @@ object UpdateManager {
         val notifId = 1001
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, "App Updates", NotificationManager.IMPORTANCE_LOW)
+            val channel = NotificationChannel(channelId, context.getString(R.string.update_channel), NotificationManager.IMPORTANCE_LOW)
             notificationManager.createNotificationChannel(channel)
         }
 
         val builder = NotificationCompat.Builder(context, channelId)
-            .setContentTitle("Downloading Sponsor Skip v$version")
+            .setContentTitle(context.getString(R.string.downloading_version, version))
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setOngoing(true)
@@ -378,7 +378,7 @@ object UpdateManager {
                     AppLogger.log("[UPDATER] Deleted untrusted APK file.")
                 }
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Update failed: APK signature verification failed. Downloaded file is untrusted.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, R.string.signature_failed, Toast.LENGTH_LONG).show()
                 }
                 return
             }
@@ -393,7 +393,7 @@ object UpdateManager {
         } catch (e: Exception) {
             notificationManager.cancel(notifId)
             AppLogger.log("[UPDATER] Download failed: ${e.message}")
-            withContext(Dispatchers.Main) { Toast.makeText(context, "Download failed.", Toast.LENGTH_SHORT).show() }
+            withContext(Dispatchers.Main) { Toast.makeText(context, R.string.download_failed, Toast.LENGTH_SHORT).show() }
         }
     }
 

@@ -41,12 +41,12 @@ class BilibiliResolver(private val client: OkHttpClient) {
 
         extractBvid(metadata)?.let { bvid ->
             AppLogger.log("[BILI RESOLVER] BVID found directly in media metadata: $bvid")
-            return cache(cacheKey, BilibiliVideoId(bvid, resolveCid(bvid, title, durationMs)))
+            return cache(cacheKey, BilibiliVideoId(bvid))
         }
 
         extractBvidFromNumericMediaId(metadata)?.let { bvid ->
             AppLogger.log("[BILI RESOLVER] Converted numeric media ID to BVID: $bvid")
-            return cache(cacheKey, BilibiliVideoId(bvid, resolveCid(bvid, title, durationMs)))
+            return cache(cacheKey, BilibiliVideoId(bvid))
         }
 
         val query = URLEncoder.encode(title, "UTF-8")
@@ -95,7 +95,7 @@ class BilibiliResolver(private val client: OkHttpClient) {
             }
 
             AppLogger.log("[BILI RESOLVER] Selected BVID $bestBvid (score=$bestScore)")
-            return cache(cacheKey, BilibiliVideoId(bestBvid, resolveCid(bestBvid, title, durationMs)))
+            return cache(cacheKey, BilibiliVideoId(bestBvid))
         }
     }
 
@@ -143,7 +143,7 @@ class BilibiliResolver(private val client: OkHttpClient) {
         this[second] = temporary
     }
 
-    private fun resolveCid(bvid: String, title: String, durationMs: Long): String? {
+    fun resolveCid(bvid: String, title: String, durationMs: Long): String? {
         val url = "https://api.bilibili.com/x/web-interface/view?bvid=$bvid"
         val response = client.newCall(
             Request.Builder().url(url).header("User-Agent", USER_AGENT).header("Referer", "https://www.bilibili.com/").build()

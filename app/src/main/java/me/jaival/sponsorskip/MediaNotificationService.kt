@@ -12,6 +12,7 @@ import android.media.session.PlaybackState
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.service.notification.NotificationListenerService
 import android.widget.Toast
 import kotlinx.coroutines.*
@@ -90,7 +91,7 @@ class MediaNotificationService : NotificationListenerService() {
                     try {
                         if (ytController?.playbackState?.state != PlaybackState.STATE_PLAYING) {
                             AppLogger.log("$modePrefix Target is buffering/paused. Waiting for playback...")
-                            while (ytController?.playbackState?.state != PlaybackState.STATE_PLAYING && isActive) { delay(400) }
+                            while (ytController?.playbackState?.state != PlaybackState.STATE_PLAYING && isActive) { delay(100) }
                             if (!isActive) return@launch
                             AppLogger.log("$modePrefix Playback started for '$targetIdentifier'.")
                         }
@@ -98,7 +99,7 @@ class MediaNotificationService : NotificationListenerService() {
                         val freshMetadata = ytController?.metadata
                         val actualDuration = freshMetadata?.getLong(MediaMetadata.METADATA_KEY_DURATION) ?: initialDuration
 
-                        if (!isSpotApp && actualDuration <= 181000L) {
+                        if (!isSpotApp && !isBilibiliApp && actualDuration <= 181000L) {
                             AppLogger.log("$modePrefix Short video suspect -> 1.5s debounce delay")
                             delay(1500)
                         }
@@ -198,12 +199,12 @@ class MediaNotificationService : NotificationListenerService() {
                 val resolved = bilibiliResolver.resolve(metadata, targetInput, durationMs)
                 if (resolved == null) {
                     AppLogger.log("[BILI RESOLVER] FATAL: Could not resolve a BVID for '$targetInput'.")
-                    if (SettingsManager.isLoggingEnabled) showToast("Error: Could not find bilibili video ID")
+                    if (SettingsManager.isLoggingEnabled) showToast(getString(R.string.bilibili_video_id_error))
                     return
                 }
                 targetVideoId = resolved.bvid
                 bilibiliCid = resolved.cid
-                AppLogger.log("[BILI RESOLVER] Resolved media to BVID=$targetVideoId, CID=${bilibiliCid ?: "unknown"}")
+                AppLogger.log("[BILI RESOLVER] Resolved media to BVID=$targetVideoId; fetching segments before optional CID lookup")
             } else {
                 val useStrict = SettingsManager.isStrictSearchEnabled
                 val scrapeMethod = if (useStrict) "strict intitle search" else "standard search"
@@ -216,7 +217,7 @@ class MediaNotificationService : NotificationListenerService() {
 
                 if (match == null) {
                     AppLogger.log("[SCRAPER] FATAL: Failed to locate Video ID using method: $scrapeMethod.")
-                    if (SettingsManager.isLoggingEnabled) showToast("Error: Could not extract Video ID")
+                    if (SettingsManager.isLoggingEnabled) showToast(getString(R.string.video_id_error))
                     return
                 }
                 
@@ -252,13 +253,31 @@ class MediaNotificationService : NotificationListenerService() {
 
             if (!sponsorRes.isSuccessful) {
                 sponsorRes.close()
-                if (SettingsManager.isLoggingEnabled) showToast("No segments are there for the audio/video")
+                if (SettingsManager.isLoggingEnabled) showToast(getString(R.string.no_segments))
                 return
             }
 
             val sponsorJson = sponsorRes.use { JSONArray(it.body?.string() ?: "[]") }
             skipSegments.clear()
             val armedSegments = mutableListOf<Segment>()
+
+            if (isBilibiliMode && bilibiliCid == null) {
+                val matchingCids = buildSet {
+                    for (i in 0 until sponsorJson.length()) {
+                        val candidate = sponsorJson.optJSONObject(i) ?: continue
+                        val submittedDuration = candidate.optLong("videoDuration", 0L)
+                        val durationMatches = durationMs <= 0L || submittedDuration <= 0L ||
+                            abs(durationMs / 1000L - submittedDuration) <= 5L
+                        candidate.optString("cid").takeIf { it.isNotBlank() && durationMatches }?.let(::add)
+                    }
+                }
+                bilibiliCid = when {
+                    matchingCids.size == 1 -> matchingCids.first()
+                    matchingCids.size > 1 -> bilibiliResolver.resolveCid(targetVideoId, targetInput, durationMs)
+                    else -> null
+                }
+                AppLogger.log("[BILI RESOLVER] Candidate CIDs=${matchingCids.size}; selected=${bilibiliCid ?: "not required"}")
+            }
 
             for (i in 0 until sponsorJson.length()) {
                 val obj = sponsorJson.getJSONObject(i)
@@ -326,12 +345,12 @@ class MediaNotificationService : NotificationListenerService() {
 
             if (skipSegments.isNotEmpty()) {
                 AppLogger.log("[TRACKER] Engaging playback loop for ${skipSegments.size} merged blocks.")
-                showToast("Loaded $armedCount segments to skip")
+                showToast(getString(R.string.segments_loaded, armedCount))
                 startTracking()
             }
         } catch (e: Exception) {
             AppLogger.log("[FATAL] Trace: ${e.message}")
-            if (SettingsManager.isLoggingEnabled) showToast("Error fetching segments")
+            if (SettingsManager.isLoggingEnabled) showToast(getString(R.string.segments_fetch_error))
         }
     }
 
@@ -367,11 +386,15 @@ class MediaNotificationService : NotificationListenerService() {
                 try {
                     val state = ytController?.playbackState
                     if (state?.state == PlaybackState.STATE_PLAYING) {
-                        val pos = state.position
+                        val elapsed = if (state.lastPositionUpdateTime > 0L) {
+                            (SystemClock.elapsedRealtime() - state.lastPositionUpdateTime).coerceAtLeast(0L)
+                        } else 0L
+                        val pos = (state.position + elapsed * state.playbackSpeed).toLong().coerceAtLeast(0L)
                         val hit = skipSegments.find { pos in it.startMs..it.endMs }
 
                         if (hit != null) {
                             AppLogger.log("[TRACKER] ⚠️ CROSSED BOUNDARY: ${hit.category.uppercase()} at $pos ms")
+                            skipSegments.remove(hit)
                             try {
                                 ytController?.transportControls?.seekTo(hit.endMs)
                             } catch (e: Exception) {
@@ -391,9 +414,8 @@ class MediaNotificationService : NotificationListenerService() {
                                 }
                             }
 
-                            showToast(if (hit.category == "multiple") "Skipped Multiple segments" else "Skipped: ${hit.category.uppercase()}")
-                            skipSegments.remove(hit)
-                            delay(2000)
+                            showToast(if (hit.category == "multiple") getString(R.string.skipped_multiple) else getString(R.string.skipped_category, localizedCategoryName(hit.category)))
+                            delay(250)
                         }
                     }
                 } catch (e: Exception) {
@@ -401,9 +423,26 @@ class MediaNotificationService : NotificationListenerService() {
                         AppLogger.log("[TRACKER] Loop error: ${e.message}")
                     }
                 }
-                delay(1000)
+                delay(200)
             }
         }
+    }
+
+    private fun localizedCategoryName(category: String): String {
+        val resourceId = when (category) {
+            "sponsor" -> R.string.category_sponsor
+            "selfpromo" -> R.string.category_selfpromo
+            "interaction" -> R.string.category_interaction
+            "intro" -> R.string.category_intro
+            "outro" -> R.string.category_outro
+            "preview" -> R.string.category_preview
+            "exclusive_access" -> R.string.category_exclusive_access
+            "padding" -> R.string.category_padding
+            "filler" -> R.string.category_filler
+            "music_offtopic" -> R.string.category_music_offtopic
+            else -> return category.uppercase()
+        }
+        return getString(resourceId)
     }
 
     private fun showToast(msg: String) = mainHandler.post { Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show() }
