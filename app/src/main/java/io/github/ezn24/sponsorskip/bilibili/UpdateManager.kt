@@ -397,7 +397,7 @@ object UpdateManager {
         }
     }
 
-    private const val OFFICIAL_SIGNATURE_SHA256 = "6C7E708C3F3D7D613844A42851F8C66F10FC5A8DE284A5DBBCDF26D1FA50D05D
+    private const val OFFICIAL_SIGNATURE_SHA256 = "6C7E708C3F3D7D613844A42851F8C66F10FC5A8DE284A5DBBCDF26D1FA50D05D"
 
     private fun verifyApkSignature(context: Context, apkFile: File): Boolean {
         if (!apkFile.exists() || !apkFile.isFile || apkFile.length() == 0L) {
