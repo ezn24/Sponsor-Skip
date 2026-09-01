@@ -334,7 +334,7 @@ Sponsor Skip for Bilibili 的 Bilibili 功能建立在多個開源專案及社�
 
 ### 1. Sponsor-Skip
 
-**[Sponsor-Skip](https://github.com/hanydd/BilibiliSponsorBlock)**
+**[Sponsor-Skip](https://github.com/jaival-11/Sponsor-Skip)**
 由 [Jaival-11](https://github.com/jaival-11) 建立及維護
 
 基於其項目並經過修改以適配 BiliBili，總體原理類似

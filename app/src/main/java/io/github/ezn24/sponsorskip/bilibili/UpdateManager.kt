@@ -1,6 +1,6 @@
 /*
- * Sponsor Skip - Auto-skips SponsorBlock segments in YouTube videos
- * Copyright (C) 2026 Jaival
+ * Sponsor Skip - Auto-skips SponsorBlock segments in Bilibili videos
+ * Copyright (C) 2026 ezn24
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ object UpdateManager {
 
             AppLogger.log("[UPDATER] Local App Version: '$currentVersion' | Pre-release Allowed: $includePreRelease")
 
-            val req = Request.Builder().url("https://api.github.com/repos/jaival-11/Sponsor-Skip/releases").header("User-Agent", "Sponsor-Skip").build()
+            val req = Request.Builder().url("https://api.github.com/repos/ezn24/Sponsor-Skip-Bilibili/releases").header("User-Agent", "Sponsor-Skip").build()
             val res = withContext(Dispatchers.IO) { client.newCall(req).execute() }
 
             if (!res.isSuccessful) {
@@ -183,7 +183,7 @@ object UpdateManager {
 
             AppLogger.log("[UPDATER] 24h Background Check - Local App Version: '$currentVersion'")
 
-            val req = Request.Builder().url("https://api.github.com/repos/jaival-11/Sponsor-Skip/releases").header("User-Agent", "Sponsor-Skip").build()
+            val req = Request.Builder().url("https://api.github.com/repos/ezn24/Sponsor-Skip-Bilibili/releases").header("User-Agent", "Sponsor-Skip").build()
             val res = withContext(Dispatchers.IO) { client.newCall(req).execute() }
 
             if (!res.isSuccessful) {
@@ -308,7 +308,7 @@ object UpdateManager {
 
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaival-11/Sponsor-Skip/releases/tag/v$tag"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/ezn24/Sponsor-Skip-Bilibili/releases/tag/v$tag"))
                 context.startActivity(intent)
             }
         }
@@ -397,7 +397,7 @@ object UpdateManager {
         }
     }
 
-    private const val OFFICIAL_SIGNATURE_SHA256 = "8AED4B26590819F745DBD458B659BB8E692A71736BDE7A57FB513604A0835D11"
+    private const val OFFICIAL_SIGNATURE_SHA256 = "6C7E708C3F3D7D613844A42851F8C66F10FC5A8DE284A5DBBCDF26D1FA50D05D
 
     private fun verifyApkSignature(context: Context, apkFile: File): Boolean {
         if (!apkFile.exists() || !apkFile.isFile || apkFile.length() == 0L) {

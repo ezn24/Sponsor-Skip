@@ -1,6 +1,6 @@
 /*
- * Sponsor Skip - Auto-skips SponsorBlock segments in YouTube videos
- * Copyright (C) 2026 Jaival
+ * Sponsor Skip - Auto-skips SponsorBlock segments in Bilibili videos
+ * Copyright (C) 2026 ezn24
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

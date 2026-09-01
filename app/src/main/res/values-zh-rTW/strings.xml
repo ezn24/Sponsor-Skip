@@ -21,7 +21,7 @@
     <string name="privacy_policy">隱私權政策</string>
     <string name="app_license">應用程式授權（GPLv3）</string>
     <string name="open_source_licenses">開放原始碼授權</string>
-    <string name="made_with_love">由 Jaival 用 ❤️ 製作</string>
+    <string name="made_with_love">由 ezn24 用 ❤️ 製作</string>
     <string name="reset_statistics">重設統計資料</string>
     <string name="reset_statistics_message">確定要重設已儲存的片段數和時間嗎？</string>
     <string name="reset">重設</string>
@@ -38,7 +38,7 @@
     <string name="failed_open_link">無法開啟連結</string>
     <string name="no_license_url">此程式庫未提供授權連結</string>
     <string name="license_title">授權與免責聲明</string>
-    <string name="license_message">Sponsor Skip：自動跳過 YouTube 影片中的 SponsorBlock 片段\n著作權所有 © 2026 Jaival\n\n本程式為自由軟體：您可以依據自由軟體基金會發布的 GNU 通用公共授權條款第 3 版或任何後續版本，重新發布和／或修改本程式。\n\n本程式的發布旨在希望其有用，但不提供任何擔保，甚至不包含適售性或特定用途適用性的默示擔保。詳情請參閱 GNU 通用公共授權條款。</string>
+    <string name="license_message">Sponsor Skip：自動跳過 YouTube 影片中的 SponsorBlock 片段\n著作權所有 © 2026 ezn24\n\n本程式為自由軟體：您可以依據自由軟體基金會發布的 GNU 通用公共授權條款第 3 版或任何後續版本，重新發布和／或修改本程式。\n\n本程式的發布旨在希望其有用，但不提供任何擔保，甚至不包含適售性或特定用途適用性的默示擔保。詳情請參閱 GNU 通用公共授權條款。</string>
     <string name="view_full_gpl">查看完整 GPLv3</string>
     <string name="welcome_title">歡迎使用 Sponsor Skip！</string>
     <string name="privacy_message">為保持透明並尊重您的隱私，以下是應用程式的運作方式：\n\n1. 尋找影片：應用程式需要「通知存取權」來讀取 Bilibili 目前媒體播放器的標題、時間和播放位置。應用程式不會讀取私人訊息。\n\n2. 取得影片 ID：當媒體工作階段沒有提供 BVID 時，應用程式會使用標題搜尋 Bilibili 公開 API，並以時間核對結果。不會傳送帳號資料、登入資訊或 Cookie。\n\n3. 跳過片段：應用程式會將 BVID 和必要時的 CID 傳送至社群營運的 BilibiliSponsorBlock API（bsbsb.top），以取得跳過時間點。\n\n4. 本機處理：實際跳過操作完全在您的手機上完成。應用程式絕不會收集、儲存、分享或出售您的觀看記錄。\n\n點按「接受」即表示您同意我們的隱私權政策。</string>

@@ -1,6 +1,6 @@
 /*
- * Sponsor Skip - Auto-skips SponsorBlock segments in YouTube videos
- * Copyright © 2026 Jaival
+ * Sponsor Skip - Auto-skips SponsorBlock segments in Bilibili videos
+ * Copyright © 2026 ezn24
  */
 
 package io.github.ezn24.sponsorskip.bilibili
